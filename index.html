@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Increment Capital</title>
+  <meta name="description" content="Increment Capital is a technology investment firm empowering visionary founders from Seed to Global Scale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ========== SVG Logo Symbol (reusable) ========== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="ic-logo" viewBox="0 0 400 64">
+        <!-- Wordmark -->
+        <text x="2" y="46" class="logo-word-1">increment</text>
+        <text x="190" y="46" class="logo-word-2">capital</text>
+        <!-- Bar chart mark -->
+        <rect x="330" y="28" width="6" height="22" fill="#1e6978" rx="1" />
+        <rect x="340" y="18" width="6" height="32" fill="#2e9e5f" rx="1" />
+        <rect x="350" y="8"  width="6" height="42" fill="#2876c4" rx="1" />
+        <!-- ++ superscript -->
+        <text x="362" y="16" class="logo-plus">++</text>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ========== Scroll Progress Bar ========== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ========== Grid Overlay (tech texture) ========== -->
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Increment Capital home">
+        <svg class="logo-svg"><use href="#ic-logo"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="#mission" class="nav__link"><span class="nav__num">01</span> Mission</a>
+        <a href="#approach" class="nav__link"><span class="nav__num">02</span> Approach</a>
+        <a href="#thesis" class="nav__link"><span class="nav__num">03</span> Thesis</a>
+        <a href="#experience" class="nav__link"><span class="nav__num">04</span> Experience</a>
+        <a href="#portfolio" class="nav__link"><span class="nav__num">05</span> Portfolio</a>
+        <a href="#contact" class="nav__link nav__link--cta">Pitch Us <span class="arrow">&rarr;</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    <div class="hero__glow" id="heroGlow"></div>
+
+    <!-- HUD ornaments -->
+    <div class="hud hud--tl"><span></span><span></span></div>
+    <div class="hud hud--tr"><span></span><span></span></div>
+    <div class="hud hud--bl"><span></span><span></span></div>
+    <div class="hud hud--br"><span></span><span></span></div>
+
+    <!-- Live status chip -->
+    <div class="status-chip">
+      <span class="status-dot"></span>
+      <span class="status-text">Actively Deploying Capital &middot; 2026</span>
+    </div>
+
+    <div class="container hero__content">
+      <p class="hero__label">
+	<br><br>
+        <span class="label-bracket">[</span>
+	Technology Investment Firm
+        <span class="label-bracket">]</span>
+      </p>
+      <h1 class="hero__title">
+        <span class="type-line">Empowering Visionary Founders</span><br />
+        <span class="type-line type-line--accent">from Seed to Global Scale</span>
+      </h1>
+      <p class="hero__sub">Increment Capital is a technology investment firm that fuses flexible capital with an active corporate development approach to investing across the AI Value Chain in Asia and the U.S.</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">
+          Pitch Us
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#approach" class="btn btn--ghost">Our Approach</a>
+      </div>
+
+      <!-- Data ticker -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span class="ticker__item"><em>Hong Kong</em> 22.28°N &middot; 114.17°E</span>
+          <span class="ticker__item"><em>Shanghai</em> 31.23°N &middot; 121.47°E</span>
+          <span class="ticker__item"><em>Seattle</em> 47.61°N &middot; -122.33°E</span>
+          <span class="ticker__item"><em>Pre-Seed &rarr; IPO</em></span>
+          <span class="ticker__item"><em>Full AI Value Chain</em></span>
+          <span class="ticker__item"><em>LLM &middot; Infra &middot; Silicon &middot; Robotics</em></span>
+          <!-- duplicate -->
+          <span class="ticker__item"><em>Hong Kong</em> 22.28°N &middot; 114.17°E</span>
+          <span class="ticker__item"><em>Shanghai</em> 31.23°N &middot; 121.47°E</span>
+          <span class="ticker__item"><em>Seattle</em> 47.61°N &middot; -122.33°E</span>
+          <span class="ticker__item"><em>Pre-Seed &rarr; Series B</em></span>
+          <span class="ticker__item"><em>Full AI Value Chain</em></span>
+          <span class="ticker__item"><em>LLM &middot; Infra &middot; Silicon &middot; Robotics</em></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== MISSION ========== -->
+  <section class="section mission" id="mission">
+    <span class="section-id" aria-hidden="true">// 01 — mission</span>
+    <div class="container">
+      <span class="section__label">Our Mission</span>
+      <h2 class="section__title">Partnering with exceptional founders and management teams with flexible private equity and debt capital to build enduring technology businesses over time.</h2>
+
+      <!-- Partnership Trajectory Graphic -->
+      <div class="trajectory-wrap">
+        <svg class="trajectory-svg" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet" aria-labelledby="trajectory-title" role="img">
+          <title id="trajectory-title">Partnership and growth trajectory</title>
+
+          <defs>
+            <linearGradient id="curveGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%"   stop-color="#2bb3c9" />
+              <stop offset="45%"  stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#2876c4" />
+            </linearGradient>
+            <linearGradient id="towerGrad" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%"   stop-color="#1e6978" />
+              <stop offset="55%"  stop-color="#2bb3c9" />
+              <stop offset="100%" stop-color="#2876c4" />
+            </linearGradient>
+            <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="rgba(56,189,248,0.6)" />
+              <stop offset="100%" stop-color="rgba(56,189,248,0)"   />
+            </radialGradient>
+            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="glow" />
+              <feMerge>
+                <feMergeNode in="glow" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <pattern id="dotGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="0.8" fill="rgba(148,163,184,0.18)" />
+            </pattern>
+          </defs>
+
+          <!-- Backdrop -->
+          <rect x="0" y="0" width="1000" height="440" fill="url(#dotGrid)" />
+
+          <!-- Horizontal time axis -->
+          <line x1="70" y1="400" x2="930" y2="400" stroke="rgba(148,163,184,0.18)" stroke-width="1" stroke-dasharray="3 5"/>
+          <text x="70" y="422" class="tr-axis-label"></text>
+          <text x="930" y="422" text-anchor="end" class="tr-axis-label">TIME &rarr;</text>
+
+          <!-- Source: Founders -->
+          <g class="tr-source" transform="translate(95, 250)">
+            <circle r="36" class="tr-source-glow" />
+            <circle r="28" class="tr-source-ring" />
+            <circle r="22" class="tr-source-fill" />
+            <g transform="translate(-11, -11)" stroke="#e2e8f0" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="11" cy="7" r="4" />
+            </g>
+            <text y="62" text-anchor="middle" class="tr-source-label">EXCEPTIONAL</text>
+            <text y="78" text-anchor="middle" class="tr-source-label">FOUNDERS</text>
+          </g>
+
+          <!-- Source: Capital -->
+          <g class="tr-source" transform="translate(95, 360)">
+            <circle r="36" class="tr-source-glow" />
+            <circle r="28" class="tr-source-ring" />
+            <circle r="22" class="tr-source-fill" />
+            <g transform="translate(-11, -11)" stroke="#e2e8f0" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20" />
+              <path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </g>
+            <text y="62" text-anchor="middle" class="tr-source-label">FLEXIBLE</text>
+            <text y="78" text-anchor="middle" class="tr-source-label">CAPITAL</text>
+          </g>
+
+          <!-- Converging lines to core -->
+          <path class="tr-converge" d="M 130,250 C 170,265 190,290 212,305" />
+          <path class="tr-converge" d="M 130,360 C 170,345 190,320 212,305" />
+
+          <!-- Central partnership core -->
+          <g transform="translate(220, 305)">
+            <circle r="48" fill="url(#coreGlow)" />
+            <circle r="28" class="tr-core-ring-3" />
+            <circle r="20" class="tr-core-ring-2" />
+            <circle r="12" class="tr-core-ring-1" fill="#38bdf8" filter="url(#softGlow)" />
+          </g>
+
+          <!-- Rising trajectory path -->
+          <path id="trajectoryPath" class="tr-curve-bg"
+                d="M 220,305 C 330,295 410,255 500,205 S 760,85 870,55" />
+          <path id="trajectoryPathFg" class="tr-curve-fg"
+                d="M 220,305 C 330,295 410,255 500,205 S 760,85 870,55" />
+
+          <!-- Milestone nodes along the trajectory -->
+          <g class="tr-milestone" transform="translate(340, 265)">
+            <circle r="7" />
+            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Seed</text>
+          </g>
+          <g class="tr-milestone" transform="translate(470, 217)">
+            <circle r="7" />
+            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Growth</text>
+          </g>
+          <g class="tr-milestone" transform="translate(605, 158)">
+            <circle r="7" />
+            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Pre-IPO</text>
+          </g>
+          <g class="tr-milestone" transform="translate(745, 96)">
+            <circle r="7" />
+            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Credit Solutions</text>
+          </g>
+
+          <!-- End state: Enduring Business (stacked towers) -->
+          <g class="tr-enduring" transform="translate(870, 55)">
+            <rect x="-34" y="-12" width="14" height="62" rx="2" fill="url(#towerGrad)" opacity="0.55" />
+            <rect x="-16" y="-30" width="14" height="80" rx="2" fill="url(#towerGrad)" opacity="0.80" />
+            <rect x="2"   y="-48" width="14" height="98" rx="2" fill="url(#towerGrad)" filter="url(#softGlow)" />
+            <rect x="20"  y="-22" width="14" height="72" rx="2" fill="url(#towerGrad)" opacity="0.70" />
+            <!-- Windows -->
+            <g fill="rgba(10,11,15,0.6)">
+              <rect x="-30" y="-4"  width="6" height="2" />
+              <rect x="-30" y="8"   width="6" height="2" />
+              <rect x="-30" y="20"  width="6" height="2" />
+              <rect x="-12" y="-22" width="6" height="2" />
+              <rect x="-12" y="-10" width="6" height="2" />
+              <rect x="-12" y="2"   width="6" height="2" />
+              <rect x="-12" y="14"  width="6" height="2" />
+              <rect x="-12" y="26"  width="6" height="2" />
+              <rect x="6"   y="-40" width="6" height="2" />
+              <rect x="6"   y="-28" width="6" height="2" />
+              <rect x="6"   y="-16" width="6" height="2" />
+              <rect x="6"   y="-4"  width="6" height="2" />
+              <rect x="6"   y="8"   width="6" height="2" />
+              <rect x="6"   y="20"  width="6" height="2" />
+              <rect x="6"   y="32"  width="6" height="2" />
+              <rect x="24"  y="-14" width="6" height="2" />
+              <rect x="24"  y="-2"  width="6" height="2" />
+              <rect x="24"  y="10"  width="6" height="2" />
+              <rect x="24"  y="22"  width="6" height="2" />
+            </g>
+            <text y="78" text-anchor="middle" class="tr-end-label">ENDURING BUSINESS</text>
+          </g>
+
+          <!-- Traveling particle along the trajectory -->
+          <circle class="tr-traveler" r="5" fill="#38bdf8" filter="url(#softGlow)">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trajectoryPath" />
+            </animateMotion>
+          </circle>
+          <circle class="tr-traveler-core" r="2.5" fill="#ffffff">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trajectoryPath" />
+            </animateMotion>
+          </circle>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== APPROACH ========== -->
+  <section class="section approach" id="approach">
+    <span class="section-id" aria-hidden="true">// 02 — approach</span>
+    <div class="container">
+      <span class="section__label">Investment Approach</span>
+      <h2 class="section__title section__title--left">Employing a sector driven approach, we invest in consumer technology, blockchain, artificial intelligence and AI/Digital infrastructure businesses.</h2>
+
+      <div class="approach__grid">
+        <!-- Card 1 -->
+        <div class="card" data-animate>
+          <span class="card__index">01</span>
+          <div class="card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="card__title">Enabling Founders</h3>
+          <p class="card__text">We invest at the genesis of innovation, often at pre-seed or seed, across the entire AI value chain.</p>
+          <span class="card__corner card__corner--tl"></span>
+          <span class="card__corner card__corner--tr"></span>
+          <span class="card__corner card__corner--bl"></span>
+          <span class="card__corner card__corner--br"></span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" data-animate>
+          <span class="card__index">02</span>
+          <div class="card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 class="card__title">Long-term Capital Partnership</h3>
+          <p class="card__text">We continue support with creative equity and debt capital solutions with ecosystem partners to source and scale outliers.</p>
+          <span class="card__corner card__corner--tl"></span>
+          <span class="card__corner card__corner--tr"></span>
+          <span class="card__corner card__corner--bl"></span>
+          <span class="card__corner card__corner--br"></span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card" data-animate>
+          <span class="card__index">03</span>
+          <div class="card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+          </div>
+          <h3 class="card__title">Active, Sector-driven</h3>
+          <p class="card__text">A long-term strategic partner, we invest where we have unique insights to source and scale outliers: industry defining LLMs, AI tooling and inference, AI-optimized semiconductors, vertical AI businesses, Blockchain x AI applications, digital infrastructure, robotics, advanced power generation and cooling.  <br><br> In-house corporate development capabilities to help accelerate growth through strategic acquisitions, operational improvement and AI/technology adoption.</p>
+          <span class="card__corner card__corner--tl"></span>
+          <span class="card__corner card__corner--tr"></span>
+          <span class="card__corner card__corner--bl"></span>
+          <span class="card__corner card__corner--br"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== THESIS (AI VALUE CHAIN) ========== -->
+  <section class="section thesis" id="thesis">
+    <span class="section-id" aria-hidden="true">// 03 — thesis</span>
+    <div class="container">
+      <span class="section__label">AI Value Chain</span>
+      <h2 class="section__title">Investing Across the Full AI Stack</h2>
+
+      <!-- Terminal console -->
+      <div class="console" aria-hidden="true">
+        <div class="console__bar">
+          <span class="console__dot"></span>
+          <span class="console__dot"></span>
+          <span class="console__dot"></span>
+          <span class="console__title">increment.thesis &mdash; ~/ai-value-chain</span>
+        </div>
+        <div class="console__body">
+          <div class="console__line"><span class="console__prompt">$</span> <span class="console__cmd">query --stack=ai --layer=full</span></div>
+          <div class="console__line console__line--dim">&gt; scanning value chain...</div>
+          <div class="console__line console__line--ok">&gt; 8 layers &middot; full-stack coverage &middot; <span class="console__highlight">active</span></div>
+          <div class="console__line"><span class="console__prompt">$</span> <span class="console__caret"></span></div>
+        </div>
+      </div>
+
+      <div class="thesis__grid">
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">LLM</span>
+          <span class="thesis__name">Foundation Models</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&lt;/&gt;</span>
+          <span class="thesis__name">AI Tooling &amp; Inference</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&#9670;</span>
+          <span class="thesis__name">AI Semiconductors</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&#9041;</span>
+          <span class="thesis__name">Vertical AI</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&#8734;</span>
+          <span class="thesis__name">Blockchain x AI</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&#9881;</span>
+          <span class="thesis__name">Digital Infrastructure</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&#9737;</span>
+          <span class="thesis__name">Robotics</span>
+        </div>
+        <div class="thesis__item" data-animate>
+          <span class="thesis__icon">&#9889;</span>
+          <span class="thesis__name">Power &amp; Cooling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section class="section experience" id="experience">
+    <span class="section-id" aria-hidden="true">// 04 — experience</span>
+    <div class="container">
+      <span class="section__label">Why Increment</span>
+      <h2 class="section__title section__title--left">World Class Investment Experience</h2>
+      <p class="approach__sub">Our investment approach in early-to-growth stage companies are informed by collective experience across early-stage venture, growth equity, buyouts, PIPEs, special situations credit, operational turnarounds, spin-offs and restructurings.</p>
+
+      <div class="experience__grid">
+        <div class="exp-card" data-animate>
+          <h4 class="exp-card__title">Multidisciplinary Backgrounde</h4>
+          <p class="exp-card__text">Venture, Private Equity, Private Credit, Special Situations — a flexible, multi-asset approach to funding innovation at every stage.</p>
+        </div>
+        <div class="exp-card" data-animate>
+          <h4 class="exp-card__title">Top-Tier Institutional Experience</h4>
+          <p class="exp-card__text">Unique blend of public and private investment experience at world class organizations including Warburg Pincus, Clearlake Capital, Goldman Sachs, UBS and JPMorgan.</p>
+        </div>
+        <div class="exp-card" data-animate>
+          <h4 class="exp-card__title">Technology Focus</h4>
+          <p class="exp-card__text">Employing a sector driven approach, we invest in consumer technology, blockchain, artificial intelligence and AI/Digital infrastructure businesses.</p>
+        </div>
+        <div class="exp-card" data-animate>
+          <h4 class="exp-card__title">Deep Technical Expertise</h4>
+          <p class="exp-card__text">Strong technical expertise from leaders at Google, Microsoft, Amazon, and AMD — enabling diligence and value creation at every stage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PORTFOLIO ========== -->
+  <section class="section portfolio" id="portfolio">
+    <span class="section-id" aria-hidden="true">// 05 — portfolio</span>
+    <div class="container">
+      <span class="section__label">Portfolio</span>
+      <h2 class="section__title">Our partners collectively invest early in technical pioneers and grow alongside founders, scaling regional innovations into worldwide industry leaders.</h2>
+      <p class="portfolio__sub">Together with our capital and ecosystem partners, we support companies from Seed to IPO to build enduring global technology businesses.</p>
+      <div class="portfolio__marquee">
+        <div class="portfolio__track">
+          <span class="portfolio__company">Klook</span>
+          <span class="portfolio__company">Gbike</span>
+          <span class="portfolio__company">XtalPi</span>
+          <span class="portfolio__company">OmniML</span>
+          <span class="portfolio__company">Conflux</span>
+          <span class="portfolio__company">SGLang</span>
+          <span class="portfolio__company">EigenAI</span>
+          <span class="portfolio__company">Infinigence</span>
+          <span class="portfolio__company">ConsenSys</span>
+          <span class="portfolio__company">IDA</span>
+          <span class="portfolio__company">Innomatrix</span>
+          <span class="portfolio__company">Tornado AI</span>
+          <span class="portfolio__company">Atto Research</span>
+          <span class="portfolio__company">Votee AI</span>
+          <span class="portfolio__company">Falcon Alpha</span>
+          <span class="portfolio__company">GetLinks</span>
+          <span class="portfolio__company">Good Catch</span>
+          <span class="portfolio__company">Zetta</span>
+          <!-- duplicate set for seamless loop -->
+          <span class="portfolio__company">Klook</span>
+          <span class="portfolio__company">Gbike</span>
+          <span class="portfolio__company">XtalPi</span>
+          <span class="portfolio__company">OmniML</span>
+          <span class="portfolio__company">Conflux</span>
+          <span class="portfolio__company">SGLang</span>
+          <span class="portfolio__company">EigenAI</span>
+          <span class="portfolio__company">Infinigence</span>
+          <span class="portfolio__company">ConsenSys</span>
+          <span class="portfolio__company">IDA</span>
+          <span class="portfolio__company">Innomatrix</span>
+          <span class="portfolio__company">Tornado AI</span>
+          <span class="portfolio__company">Atto Research</span>
+          <span class="portfolio__company">Votee AI</span>
+          <span class="portfolio__company">Falcon Alpha</span>
+          <span class="portfolio__company">GetLinks</span>
+          <span class="portfolio__company">Good Catch</span>
+          <span class="portfolio__company">Zetta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="section contact" id="contact">
+    <span class="section-id" aria-hidden="true">// 06 — contact</span>
+    <div class="container contact__inner">
+      <span class="section__label">Get In Touch</span>
+      <h2 class="section__title">Have a compelling AI company?<br />We'd love to hear from you.</h2>
+      <a href="mailto:info@incrementcap.com" class="btn btn--primary btn--lg">
+        Pitch Us
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="contact__locations">Hong Kong &middot; Shanghai &middot; Seoul &middot; Seattle</p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#" class="footer__logo" aria-label="Increment Capital home">
+        <svg class="logo-svg logo-svg--sm"><use href="#ic-logo"/></svg>
+      </a>
+      <nav class="footer__nav">
+        <a href="#mission">Mission</a>
+        <a href="#approach">Approach</a>
+        <a href="#thesis">Thesis</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer__copy">&copy; 2026 Increment Capital. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
