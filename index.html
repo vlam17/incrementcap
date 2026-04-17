@@ -66,23 +66,115 @@
     <div class="hud hud--bl"><span></span><span></span></div>
     <div class="hud hud--br"><span></span><span></span></div>
 
-    <!-- Live status chip -->
-    <div class="status-chip">
-      <span class="status-dot"></span>
-      <span class="status-text">Actively Deploying Capital &middot; 2026</span>
-    </div>
-
     <div class="container hero__content">
-      <p class="hero__label">
-	<br><br>
-        <span class="label-bracket">[</span>
-	Technology Investment Firm
-        <span class="label-bracket">]</span>
-      </p>
-      <h1 class="hero__title">
-        <span class="type-line">Empowering Visionary Founders</span><br />
-        <span class="type-line type-line--accent">from Seed to Global Scale</span>
-      </h1>
+      <figure class="hero__figure">
+        <h1 class="hero__heading">
+          Empowering Visionary Founders
+          <span class="hero__heading-accent">from Seed to Global Scale</span>
+        </h1>
+        <div class="hero__graphic" aria-hidden="true">
+          <svg class="hero__graphic-svg" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="hg-line-grad" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%"   stop-color="#1e6978" />
+                <stop offset="35%"  stop-color="#2bb3c9" />
+                <stop offset="70%"  stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#2876c4" />
+              </linearGradient>
+              <linearGradient id="hg-area-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="rgba(56,189,248,0.28)" />
+                <stop offset="100%" stop-color="rgba(56,189,248,0)" />
+              </linearGradient>
+              <filter id="hg-glow" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="4" result="b" />
+                <feMerge>
+                  <feMergeNode in="b" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <pattern id="hg-grid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
+                <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.07)" stroke-width="1" />
+              </pattern>
+            </defs>
+
+            <!-- Grid backdrop -->
+            <rect x="0" y="0" width="900" height="340" fill="url(#hg-grid)" />
+
+            <!-- Baseline -->
+            <line x1="50" y1="280" x2="850" y2="280"
+                  stroke="rgba(148,163,184,0.18)" stroke-width="1" stroke-dasharray="3 6" />
+
+            <!-- Vertical drop lines from nodes to baseline -->
+            <g class="hg-drops">
+              <line x1="220" y1="220" x2="220" y2="280" />
+              <line x1="360" y1="170" x2="360" y2="280" />
+              <line x1="500" y1="120" x2="500" y2="280" />
+              <line x1="640" y1="75"  x2="640" y2="280" />
+              <line x1="780" y1="40"  x2="780" y2="280" />
+            </g>
+
+            <!-- Area fill under stepped path -->
+            <path class="hg-area"
+                  d="M 80,270 L 220,270 L 220,220 L 360,220 L 360,170 L 500,170 L 500,120 L 640,120 L 640,75 L 780,75 L 780,40 L 830,40 L 830,280 L 80,280 Z"
+                  fill="url(#hg-area-grad)" />
+
+            <!-- Stepped trajectory line -->
+            <path class="hg-line"
+                  d="M 80,270 L 220,270 L 220,220 L 360,220 L 360,170 L 500,170 L 500,120 L 640,120 L 640,75 L 780,75 L 780,40 L 830,40"
+                  fill="none"
+                  stroke="url(#hg-line-grad)"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  filter="url(#hg-glow)" />
+
+            <!-- Step nodes -->
+            <g class="hg-nodes">
+              <g class="hg-node" transform="translate(220, 220)">
+                <circle r="7" class="hg-node-outer" />
+                <circle r="3.5" class="hg-node-inner" />
+              </g>
+              <g class="hg-node" transform="translate(360, 170)">
+                <circle r="7" class="hg-node-outer" />
+                <circle r="3.5" class="hg-node-inner" />
+              </g>
+              <g class="hg-node" transform="translate(500, 120)">
+                <circle r="7" class="hg-node-outer" />
+                <circle r="3.5" class="hg-node-inner" />
+              </g>
+              <g class="hg-node" transform="translate(640, 75)">
+                <circle r="7" class="hg-node-outer" />
+                <circle r="3.5" class="hg-node-inner" />
+              </g>
+              <g class="hg-node hg-node--terminal" transform="translate(780, 40)">
+                <circle r="10" fill="none" stroke="rgba(56,189,248,0.5)" stroke-width="1">
+                  <animate attributeName="r" values="10;32" dur="2.4s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.85;0" dur="2.4s" repeatCount="indefinite" />
+                </circle>
+                <circle r="10" fill="none" stroke="rgba(56,189,248,0.5)" stroke-width="1">
+                  <animate attributeName="r" values="10;32" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.85;0" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
+                </circle>
+                <circle r="9" class="hg-node-terminal-ring" />
+                <circle r="4.5" fill="#ffffff" filter="url(#hg-glow)" />
+              </g>
+            </g>
+
+            <!-- Axis labels -->
+            <text x="80"  y="306" class="hg-label hg-label--left">SEED</text>
+            <text x="830" y="24"  text-anchor="end" class="hg-label hg-label--right">GLOBAL SCALE</text>
+
+            <!-- Increment tick marks -->
+            <g class="hg-ticks">
+              <text x="220" y="306" text-anchor="middle">01</text>
+              <text x="360" y="306" text-anchor="middle">02</text>
+              <text x="500" y="306" text-anchor="middle">03</text>
+              <text x="640" y="306" text-anchor="middle">04</text>
+              <text x="780" y="306" text-anchor="middle">05</text>
+            </g>
+          </svg>
+        </div>
+      </figure>
       <p class="hero__sub">Increment Capital is a technology investment firm that fuses flexible capital with an active corporate development approach to investing across the AI Value Chain in Asia and the U.S.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">
@@ -112,10 +204,6 @@
       </div>
     </div>
 
-    <div class="hero__scroll">
-      <span>Scroll</span>
-      <div class="hero__scroll-line"></div>
-    </div>
   </section>
 
   <!-- ========== MISSION ========== -->
