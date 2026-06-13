@@ -1,783 +1,860 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Increment Capital</title>
-  <meta name="description" content="Increment Capital is a technology investment firm empowering visionary founders from Seed to Global Scale." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Increment Capital — Investing Across the Full AI Stack</title>
+<meta name="description" content="Increment Capital is a technology investment firm fusing flexible capital with active corporate development to invest in AI infrastructure across Asia and the U.S. — from Seed to Global Scale.">
+<meta property="og:title" content="Increment Capital">
+<meta property="og:description" content="Empowering visionary founders from Seed to Global Scale. Investing across the full AI stack — foundation to frontier.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://incrementcap.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0b0f;            /* page base — obsidian */
+  --ink-2:#0e1722;          /* raised panel */
+  --ink-3:#13202e;          /* hover panel */
+  --line:rgba(255,255,255,.07);
+  --line-strong:rgba(255,255,255,.16);
+  --paper:#e2e8f0;          /* primary text */
+  --muted:#94a3b8;
+  --faint:#64748b;
+  --green:#2E8A5C;          /* PRIMARY ACCENT — brand green */
+  --green-2:#5BA982;        /* brand green light */
+  --green-glow:rgba(91,169,130,.16);
+  --copper:#C8854A;         /* secondary energy accent — copper */
+  --radius:10px;
+  --serif:"Source Serif 4", Georgia, serif;
+  --sans:"Inter", -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--green);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--green-2);outline-offset:3px;border-radius:2px}
+.mono{font-family:var(--mono)}
+
+/* ---------- logo ---------- */
+.logo-svg{width:190px;height:30px;display:block;overflow:visible}
+.logo-svg--sm{width:150px;height:24px}
+.logo-word-1{font-family:var(--sans);font-size:36px;font-weight:600;letter-spacing:-.01em;fill:var(--green-2)}
+.logo-word-2{font-family:var(--sans);font-size:36px;font-weight:600;letter-spacing:-.01em;fill:#c5cad3}
+.logo-plus{font-family:var(--sans);font-size:14px;font-weight:600;fill:var(--muted)}
+.logo-svg rect{filter:drop-shadow(0 0 5px rgba(91,169,130,.3))}
+
+/* ---------- scroll progress ---------- */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--green),var(--green-2));z-index:200}
+
+/* ---------- nav ---------- */
+nav{position:fixed;top:2px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,56px);transition:background .3s,border-color .3s,padding .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(10,11,15,.86);backdrop-filter:blur(14px);border-bottom-color:var(--line);padding:12px clamp(20px,4vw,56px)}
+.brand{display:flex;align-items:center}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em;transition:color .2s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a.cta{color:var(--ink);background:var(--green-2);padding:8px 16px;border-radius:6px;font-weight:500;transition:background .2s}
+.nav-links a.cta:hover{background:var(--green);color:var(--ink)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line-strong);color:var(--paper);font-family:var(--mono);font-size:12px;padding:7px 12px;border-radius:6px;cursor:pointer}
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:0;background:rgba(10,11,15,.97);flex-direction:column;justify-content:center;gap:34px;display:none}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:16px}
+  .nav-toggle{display:block;z-index:110;position:relative}
+}
+
+/* ---------- hero ---------- */
+header{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px clamp(20px,4vw,56px) 0}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 90% 70% at 50% 35%,black 35%,transparent 75%);pointer-events:none;opacity:.6}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--green-2);margin-bottom:26px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:"";width:34px;height:1px;background:var(--green-2)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,6.4vw,84px);line-height:1.06;letter-spacing:-.015em;max-width:18ch}
+h1 em{font-style:italic;color:var(--green-2)}
+.hero-sub{margin-top:30px;max-width:58ch;color:var(--muted);font-size:clamp(15px,1.4vw,18px)}
+.hero-actions{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13px;letter-spacing:.04em;padding:13px 26px;border-radius:7px;border:1px solid var(--line-strong);color:var(--paper);transition:.2s;display:inline-block}
+.btn:hover{border-color:var(--green-2);color:var(--green-2)}
+.btn.primary{background:var(--green-2);border-color:var(--green-2);color:var(--ink);font-weight:500}
+.btn.primary:hover{background:var(--green);border-color:var(--green);color:var(--ink)}
+/* ticker */
+.ticker-wrap{margin-top:auto;border-top:1px solid var(--line);overflow:hidden;padding:14px 0;position:relative}
+.ticker{display:flex;gap:46px;white-space:nowrap;animation:tick 42s linear infinite;font-family:var(--mono);font-size:12px;color:var(--faint);width:max-content}
+.ticker span b{color:var(--muted);font-weight:500}
+.ticker span i{font-style:normal;color:var(--green-2)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+section{padding:clamp(80px,10vw,140px) clamp(20px,4vw,56px);position:relative}
+.wrap{max-width:1240px;margin:0 auto}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:18px}
+.sec-no{font-family:var(--mono);font-size:12px;color:var(--copper);letter-spacing:.1em}
+.sec-title{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,3.4vw,44px);line-height:1.18;letter-spacing:-.01em;max-width:26ch;margin-bottom:18px}
+.lede{color:var(--muted);max-width:62ch;font-size:clamp(15px,1.3vw,17px)}
+.divider{height:1px;background:var(--line);margin:0 clamp(20px,4vw,56px)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---------- focus reel (animated showcase) ---------- */
+.reel-section{padding-top:0;padding-bottom:clamp(60px,8vw,110px)}
+.reel-frame{position:relative;border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;background:#070a10;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.reel-frame canvas{display:block;width:100%;height:auto}
+.reel-hud{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint);pointer-events:none}
+.reel-hud .rec{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.reel-hud .rec::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green-2);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.reel-bar{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(transparent,rgba(7,10,16,.85))}
+.reel-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.rtab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;padding:6px 12px;border-radius:99px;border:1px solid var(--line-strong);background:rgba(10,11,15,.6);color:var(--muted);cursor:pointer;transition:.2s}
+.rtab:hover{color:var(--paper)}
+.rtab.active{border-color:var(--green-2);color:var(--green-2);background:var(--green-glow)}
+.rtab .dot{display:inline-block;width:26px;height:2px;background:var(--line-strong);margin-left:8px;vertical-align:middle;border-radius:2px;overflow:hidden;position:relative}
+.rtab.active .dot::after{content:"";position:absolute;inset:0;background:var(--green-2);transform-origin:left;animation:fillbar 5s linear forwards}
+@keyframes fillbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.reel-play{margin-left:auto;font-family:var(--mono);font-size:11px;border:1px solid var(--line-strong);background:rgba(10,11,15,.6);color:var(--paper);border-radius:6px;padding:6px 12px;cursor:pointer;transition:.2s}
+.reel-play:hover{border-color:var(--green-2);color:var(--green-2)}
+@media(max-width:680px){.rtab .dot{display:none}.rtab{padding:5px 9px;font-size:9.5px}}
+
+/* ---------- mission ---------- */
+.mission-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(30px,5vw,80px);align-items:center;margin-top:34px}
+@media(max-width:900px){.mission-grid{grid-template-columns:1fr}}
+.mission-quote{font-family:var(--serif);font-size:clamp(21px,2.4vw,30px);line-height:1.42;color:var(--paper)}
+.mission-quote em{color:var(--green-2);font-style:italic}
+.traj{border:1px solid var(--line);border-radius:var(--radius);background:var(--ink-2);padding:26px;position:relative}
+.traj svg{width:100%;height:auto;display:block}
+.traj-cap{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;margin-top:14px;text-transform:uppercase}
+
+/* ---------- THE SIGNATURE: interactive stack ---------- */
+.stack-section{background:linear-gradient(180deg,var(--ink) 0%,#0b141f 50%,var(--ink) 100%)}
+.stack-layout{display:grid;grid-template-columns:minmax(300px,440px) 1fr;gap:clamp(30px,5vw,72px);margin-top:48px;align-items:start}
+@media(max-width:980px){.stack-layout{grid-template-columns:1fr}}
+.strata{display:flex;flex-direction:column-reverse;gap:8px;position:sticky;top:110px}
+@media(max-width:980px){.strata{position:static}}
+.stratum{border:1px solid var(--line);background:var(--ink-2);border-radius:8px;padding:15px 18px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:border-color .25s,background .25s,transform .25s;text-align:left;width:100%;color:var(--paper);font-family:var(--sans)}
+.stratum:hover{border-color:var(--line-strong);transform:translateX(4px)}
+.stratum.active{border-color:var(--green-2);background:linear-gradient(90deg,var(--green-glow),var(--ink-2) 70%);transform:translateX(8px)}
+.stratum .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--copper);min-width:28px}
+.stratum.active .tag{color:var(--green-2)}
+.stratum .s-name{font-size:14px;font-weight:500}
+.stratum .s-sub{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.04em;margin-top:2px}
+.flow-label{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);padding:6px 4px}
+.flow-label .up{color:var(--green-2)}
+.flow-label .dn{color:var(--copper)}
+.stack-detail{border:1px solid var(--line);border-radius:var(--radius);background:var(--ink-2);padding:clamp(24px,3vw,40px);min-height:380px}
+.stack-detail .d-tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--green-2);text-transform:uppercase}
+.stack-detail h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,32px);margin:10px 0 14px}
+.stack-detail p{color:var(--muted);max-width:60ch}
+.d-cos{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.d-cos .d-cos-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:12px}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:12px;padding:6px 13px;border:1px solid var(--line-strong);border-radius:99px;color:var(--muted);transition:.2s}
+.chip.lit{border-color:var(--green-2);color:var(--green-2);background:var(--green-glow)}
+
+/* ---------- portfolio ---------- */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 26px}
+.fbtn{font-family:var(--mono);font-size:12px;letter-spacing:.05em;padding:8px 16px;border-radius:99px;border:1px solid var(--line-strong);background:none;color:var(--muted);cursor:pointer;transition:.2s}
+.fbtn:hover{color:var(--paper);border-color:var(--paper)}
+.fbtn.active{background:var(--green-2);border-color:var(--green-2);color:var(--ink);font-weight:500}
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.pcard{border:1px solid var(--line);border-radius:8px;background:var(--ink-2);padding:18px;transition:border-color .25s,transform .25s,opacity .35s,background .25s}
+.pcard:hover{border-color:var(--green-2);transform:translateY(-3px);background:var(--ink-3)}
+.pcard.dim{opacity:.16;pointer-events:none}
+.pcard .p-name{font-family:var(--serif);font-size:18px;font-weight:600}
+.pcard .p-desc{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45;min-height:36px}
+.pcard .p-meta{display:flex;justify-content:space-between;margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase}
+.pcard .p-meta .layer{color:var(--copper)}
+
+/* ---------- approach ---------- */
+.appr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:44px}
+@media(max-width:900px){.appr-grid{grid-template-columns:1fr}}
+.acard{border:1px solid var(--line);border-radius:var(--radius);background:var(--ink-2);padding:30px;position:relative;overflow:hidden;transition:border-color .25s}
+.acard:hover{border-color:var(--line-strong)}
+.acard .a-no{font-family:var(--mono);font-size:11px;color:var(--copper);letter-spacing:.12em}
+.acard h3{font-family:var(--serif);font-size:21px;font-weight:600;margin:14px 0 10px}
+.acard p{font-size:14px;color:var(--muted)}
+.acard .a-line{position:absolute;top:0;left:0;width:0;height:2px;background:var(--green-2);transition:width .5s}
+.acard:hover .a-line{width:100%}
+
+/* ---------- experience ---------- */
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:44px}
+@media(max-width:760px){.exp-grid{grid-template-columns:1fr}}
+.ecard{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--ink-2)}
+.ecard h4{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:8px}
+.ecard p{font-size:14px;color:var(--muted)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.badge{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:7px 14px;transition:.2s}
+.badge:hover{color:var(--green-2);border-color:var(--green-2)}
+
+/* ---------- contact ---------- */
+.contact{background:radial-gradient(ellipse 70% 90% at 50% 110%,rgba(46,138,92,.16),transparent 65%)}
+.contact .wrap{text-align:center;max-width:760px}
+.contact h2{margin:16px auto 18px;max-width:22ch}
+.contact .lede{margin:0 auto 36px}
+.coords{display:flex;justify-content:center;gap:clamp(18px,4vw,48px);flex-wrap:wrap;margin-top:54px;font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.06em}
+.coords b{display:block;color:var(--muted);font-weight:500;letter-spacing:.1em;margin-bottom:3px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:34px clamp(20px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+footer .f-l{font-family:var(--mono);font-size:11.5px;color:var(--faint);flex:1;min-width:240px}
+footer .f-links{display:flex;gap:22px}
+footer .f-links a{font-family:var(--mono);font-size:11.5px;color:var(--faint);transition:color .2s}
+footer .f-links a:hover{color:var(--paper)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
 </head>
 <body>
 
-  <!-- ========== SVG Logo Symbol (reusable) ========== -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <symbol id="ic-logo" viewBox="0 0 400 64">
-        <!-- Wordmark -->
-        <text x="2" y="46" class="logo-word-1">increment</text>
-        <text x="190" y="46" class="logo-word-2">capital</text>
-        <!-- Bar chart mark -->
-        <rect x="330" y="28" width="6" height="22" fill="#1e6978" rx="1" />
-        <rect x="340" y="18" width="6" height="32" fill="#2e9e5f" rx="1" />
-        <rect x="350" y="8"  width="6" height="42" fill="#2876c4" rx="1" />
-        <!-- ++ superscript -->
-        <text x="362" y="16" class="logo-plus">++</text>
-      </symbol>
-    </defs>
-  </svg>
+<!-- ====== reusable SVG logo symbol ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-logo" viewBox="0 0 400 64">
+      <text x="2" y="46" class="logo-word-1">increment</text>
+      <text x="190" y="46" class="logo-word-2">capital</text>
+      <rect x="330" y="28" width="6" height="22" fill="#1e6978" rx="1" />
+      <rect x="340" y="18" width="6" height="32" fill="#2e9e5f" rx="1" />
+      <rect x="350" y="8"  width="6" height="42" fill="#2876c4" rx="1" />
+      <text x="362" y="16" class="logo-plus">++</text>
+    </symbol>
+  </defs>
+</svg>
 
-  <!-- ========== Scroll Progress Bar ========== -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+<div id="progress"></div>
 
-  <!-- ========== Grid Overlay (tech texture) ========== -->
-  <div class="grid-overlay" aria-hidden="true"></div>
+<nav id="nav" aria-label="Main">
+  <a class="brand" href="#top" aria-label="Increment Capital home">
+    <svg class="logo-svg"><use href="#ic-logo"/></svg>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">MENU</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#mission">01 Mission</a>
+    <a href="#thesis">02 Thesis</a>
+    <a href="#portfolio">03 Portfolio</a>
+    <a href="#approach">04 Approach</a>
+    <a href="#experience">05 Experience</a>
+    <a class="cta" href="mailto:info@incrementcap.com">Pitch Us →</a>
+  </div>
+</nav>
 
-  <!-- ========== HEADER ========== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="#" class="logo" aria-label="Increment Capital home">
-        <svg class="logo-svg"><use href="#ic-logo"/></svg>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="nav">
-        <a href="#mission" class="nav__link"><span class="nav__num">01</span> Mission</a>
-        <a href="#portfolio" class="nav__link"><span class="nav__num">02</span> Portfolio</a>
-        <a href="#approach" class="nav__link"><span class="nav__num">03</span> Approach</a>
-        <a href="#thesis" class="nav__link"><span class="nav__num">04</span> Thesis</a>
-        <a href="#experience" class="nav__link"><span class="nav__num">05</span> Experience</a>
-        <a href="#contact" class="nav__link nav__link--cta">Pitch Us <span class="arrow">&rarr;</span></a>
-      </nav>
+<!-- ============ HERO ============ -->
+<header id="top">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap" style="width:100%">
+    <div class="hero-eyebrow">TECHNOLOGY INVESTMENT FIRM · HONG KONG / SHANGHAI / SEATTLE</div>
+    <h1>Empowering visionary founders from seed to <em>global scale</em>.</h1>
+    <p class="hero-sub">Increment Capital fuses flexible capital with an active corporate development approach to investing in AI infrastructure across Asia and the U.S. — from electrons to tokens to agents.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="mailto:info@incrementcap.com">Pitch Us</a>
+      <a class="btn" href="#thesis">Explore the Stack ↓</a>
     </div>
-  </header>
+  </div>
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker">
+      <span><b>HONG KONG</b> 22.28°N · 114.17°E</span><span><b>SHANGHAI</b> 31.23°N · 121.47°E</span><span><b>SEATTLE</b> 47.61°N · −122.33°W</span><span><i>PRE-SEED → IPO</i></span><span><b>FULL AI VALUE CHAIN</b></span><span><i>LLM · INFERENCE · SILICON · ROBOTICS</i></span><span><b>ELECTRONS → TOKENS</b></span>
+      <span><b>HONG KONG</b> 22.28°N · 114.17°E</span><span><b>SHANGHAI</b> 31.23°N · 121.47°E</span><span><b>SEATTLE</b> 47.61°N · −122.33°W</span><span><i>PRE-SEED → IPO</i></span><span><b>FULL AI VALUE CHAIN</b></span><span><i>LLM · INFERENCE · SILICON · ROBOTICS</i></span><span><b>ELECTRONS → TOKENS</b></span>
+    </div>
+  </div>
+</header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero" id="hero">
-    <canvas class="hero__canvas" id="heroCanvas"></canvas>
-    <div class="hero__glow" id="heroGlow"></div>
-
-    <!-- HUD ornaments -->
-    <div class="hud hud--tl"><span></span><span></span></div>
-    <div class="hud hud--tr"><span></span><span></span></div>
-    <div class="hud hud--bl"><span></span><span></span></div>
-    <div class="hud hud--br"><span></span><span></span></div>
-
-    <div class="container hero__content">
-      <figure class="hero__figure">
-        <h1 class="hero__heading">
-          Empowering Visionary Founders
-          <span class="hero__heading-accent">from Seed to Global Scale</span>
-        </h1>
-        <div class="hero__graphic" aria-hidden="true">
-          <svg class="hero__graphic-svg" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <linearGradient id="hg-line-grad" x1="0" y1="1" x2="1" y2="0">
-                <stop offset="0%"   stop-color="#1e6978" />
-                <stop offset="35%"  stop-color="#2bb3c9" />
-                <stop offset="70%"  stop-color="#38bdf8" />
-                <stop offset="100%" stop-color="#2876c4" />
-              </linearGradient>
-              <linearGradient id="hg-area-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%"   stop-color="rgba(56,189,248,0.28)" />
-                <stop offset="100%" stop-color="rgba(56,189,248,0)" />
-              </linearGradient>
-              <filter id="hg-glow" x="-60%" y="-60%" width="220%" height="220%">
-                <feGaussianBlur stdDeviation="4" result="b" />
-                <feMerge>
-                  <feMergeNode in="b" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-              <pattern id="hg-grid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-                <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(148,163,184,0.07)" stroke-width="1" />
-              </pattern>
-            </defs>
-
-            <!-- Grid backdrop -->
-            <rect x="0" y="0" width="900" height="340" fill="url(#hg-grid)" />
-
-            <!-- Baseline -->
-            <line x1="50" y1="280" x2="850" y2="280"
-                  stroke="rgba(148,163,184,0.18)" stroke-width="1" stroke-dasharray="3 6" />
-
-            <!-- Vertical drop lines from nodes to baseline -->
-            <g class="hg-drops">
-              <line x1="220" y1="220" x2="220" y2="280" />
-              <line x1="360" y1="170" x2="360" y2="280" />
-              <line x1="500" y1="120" x2="500" y2="280" />
-              <line x1="640" y1="75"  x2="640" y2="280" />
-              <line x1="780" y1="40"  x2="780" y2="280" />
-            </g>
-
-            <!-- Area fill under stepped path -->
-            <path class="hg-area"
-                  d="M 80,270 L 220,270 L 220,220 L 360,220 L 360,170 L 500,170 L 500,120 L 640,120 L 640,75 L 780,75 L 780,40 L 830,40 L 830,280 L 80,280 Z"
-                  fill="url(#hg-area-grad)" />
-
-            <!-- Stepped trajectory line -->
-            <path class="hg-line"
-                  d="M 80,270 L 220,270 L 220,220 L 360,220 L 360,170 L 500,170 L 500,120 L 640,120 L 640,75 L 780,75 L 780,40 L 830,40"
-                  fill="none"
-                  stroke="url(#hg-line-grad)"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  filter="url(#hg-glow)" />
-
-            <!-- Step nodes -->
-            <g class="hg-nodes">
-              <g class="hg-node" transform="translate(220, 220)">
-                <circle r="7" class="hg-node-outer" />
-                <circle r="3.5" class="hg-node-inner" />
-              </g>
-              <g class="hg-node" transform="translate(360, 170)">
-                <circle r="7" class="hg-node-outer" />
-                <circle r="3.5" class="hg-node-inner" />
-              </g>
-              <g class="hg-node" transform="translate(500, 120)">
-                <circle r="7" class="hg-node-outer" />
-                <circle r="3.5" class="hg-node-inner" />
-              </g>
-              <g class="hg-node" transform="translate(640, 75)">
-                <circle r="7" class="hg-node-outer" />
-                <circle r="3.5" class="hg-node-inner" />
-              </g>
-              <g class="hg-node hg-node--terminal" transform="translate(780, 40)">
-                <circle r="10" fill="none" stroke="rgba(56,189,248,0.5)" stroke-width="1">
-                  <animate attributeName="r" values="10;32" dur="2.4s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.85;0" dur="2.4s" repeatCount="indefinite" />
-                </circle>
-                <circle r="10" fill="none" stroke="rgba(56,189,248,0.5)" stroke-width="1">
-                  <animate attributeName="r" values="10;32" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.85;0" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
-                </circle>
-                <circle r="9" class="hg-node-terminal-ring" />
-                <circle r="4.5" fill="#ffffff" filter="url(#hg-glow)" />
-              </g>
-            </g>
-
-            <!-- Axis labels -->
-            <text x="80"  y="306" class="hg-label hg-label--left">SEED</text>
-            <text x="830" y="24"  text-anchor="end" class="hg-label hg-label--right">GLOBAL SCALE</text>
-
-            <!-- Increment tick marks -->
-            <g class="hg-ticks">
-              <text x="220" y="306" text-anchor="middle">01</text>
-              <text x="360" y="306" text-anchor="middle">02</text>
-              <text x="500" y="306" text-anchor="middle">03</text>
-              <text x="640" y="306" text-anchor="middle">04</text>
-              <text x="780" y="306" text-anchor="middle">05</text>
-            </g>
-          </svg>
-        </div>
-      </figure>
-      <p class="hero__sub">Increment Capital is a technology investment firm that fuses flexible capital with an active corporate development approach to investing in AI Infrastructure in Asia and the U.S.</p>
-      <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary">
-          Pitch Us
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#approach" class="btn btn--ghost">Our Approach</a>
-      </div>
-
-      <!-- Data ticker -->
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker__track">
-          <span class="ticker__item"><em>Hong Kong</em> 22.28°N &middot; 114.17°E</span>
-          <span class="ticker__item"><em>Shanghai</em> 31.23°N &middot; 121.47°E</span>
-          <span class="ticker__item"><em>Seattle</em> 47.61°N &middot; -122.33°E</span>
-          <span class="ticker__item"><em>Pre-Seed &rarr; IPO</em></span>
-          <span class="ticker__item"><em>Full AI Value Chain</em></span>
-          <span class="ticker__item"><em>LLM &middot; Infra &middot; Silicon &middot; Robotics</em></span>
-          <!-- duplicate -->
-          <span class="ticker__item"><em>Hong Kong</em> 22.28°N &middot; 114.17°E</span>
-          <span class="ticker__item"><em>Shanghai</em> 31.23°N &middot; 121.47°E</span>
-          <span class="ticker__item"><em>Seattle</em> 47.61°N &middot; -122.33°E</span>
-          <span class="ticker__item"><em>Pre-Seed &rarr; Series B</em></span>
-          <span class="ticker__item"><em>Full AI Value Chain</em></span>
-          <span class="ticker__item"><em>LLM &middot; Infra &middot; Silicon &middot; Robotics</em></span>
-        </div>
+<!-- ============ FOCUS REEL ============ -->
+<section class="reel-section" id="reel" aria-label="Investment focus reel">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-no">//</span><span class="sec-title">Focus Reel — Where We Invest</span></div>
+    <div class="reel-frame reveal">
+      <canvas id="reelCanvas" width="1280" height="560" role="img" aria-label="Animated reel cycling through four investment themes: robotics, large language models, AI silicon, and AI inference"></canvas>
+      <div class="reel-hud"><span class="rec">INCREMENT // FOCUS</span><span id="reelCoord">SCENE 01 / 05</span></div>
+      <div class="reel-bar">
+        <div class="reel-tabs" id="reelTabs"></div>
+        <button class="reel-play" id="reelPlay" aria-label="Pause animation">PAUSE ⏸</button>
       </div>
     </div>
+  </div>
+</section>
 
-  </section>
+<div class="divider"></div>
 
-  <!-- ========== MISSION ========== -->
-  <section class="section mission" id="mission">
-    <span class="section-id" aria-hidden="true">// 01 — mission</span>
-    <div class="container">
-      <span class="section__label">Our Mission</span>
-      <h2 class="section__title">Partnering with exceptional founders and management teams with flexible private equity and debt capital to build enduring technology businesses over time.</h2>
-
-      <!-- Partnership Trajectory Graphic -->
-      <div class="trajectory-wrap">
-        <svg class="trajectory-svg" viewBox="0 0 1000 440" preserveAspectRatio="xMidYMid meet" aria-labelledby="trajectory-title" role="img">
-          <title id="trajectory-title">Partnership and growth trajectory</title>
-
-          <defs>
-            <linearGradient id="curveGrad" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%"   stop-color="#2bb3c9" />
-              <stop offset="45%"  stop-color="#38bdf8" />
-              <stop offset="100%" stop-color="#2876c4" />
-            </linearGradient>
-            <linearGradient id="towerGrad" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0%"   stop-color="#1e6978" />
-              <stop offset="55%"  stop-color="#2bb3c9" />
-              <stop offset="100%" stop-color="#2876c4" />
-            </linearGradient>
-            <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="rgba(56,189,248,0.6)" />
-              <stop offset="100%" stop-color="rgba(56,189,248,0)"   />
-            </radialGradient>
-            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="glow" />
-              <feMerge>
-                <feMergeNode in="glow" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            <pattern id="dotGrid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="1" cy="1" r="0.8" fill="rgba(148,163,184,0.18)" />
-            </pattern>
-          </defs>
-
-          <!-- Backdrop -->
-          <rect x="0" y="0" width="1000" height="440" fill="url(#dotGrid)" />
-
-          <!-- Horizontal time axis -->
-          <line x1="70" y1="400" x2="930" y2="400" stroke="rgba(148,163,184,0.18)" stroke-width="1" stroke-dasharray="3 5"/>
-          <text x="70" y="422" class="tr-axis-label"></text>
-          <text x="930" y="422" text-anchor="end" class="tr-axis-label">TIME &rarr;</text>
-
-          <!-- Source: Founders -->
-          <g class="tr-source" transform="translate(95, 250)">
-            <circle r="36" class="tr-source-glow" />
-            <circle r="28" class="tr-source-ring" />
-            <circle r="22" class="tr-source-fill" />
-            <g transform="translate(-11, -11)" stroke="#e2e8f0" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-              <circle cx="11" cy="7" r="4" />
-            </g>
-            <text y="62" text-anchor="middle" class="tr-source-label">EXCEPTIONAL</text>
-            <text y="78" text-anchor="middle" class="tr-source-label">FOUNDERS</text>
-          </g>
-
-          <!-- Source: Capital -->
-          <g class="tr-source" transform="translate(95, 360)">
-            <circle r="36" class="tr-source-glow" />
-            <circle r="28" class="tr-source-ring" />
-            <circle r="22" class="tr-source-fill" />
-            <g transform="translate(-11, -11)" stroke="#e2e8f0" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v20" />
-              <path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-            </g>
-            <text y="62" text-anchor="middle" class="tr-source-label">FLEXIBLE</text>
-            <text y="78" text-anchor="middle" class="tr-source-label">CAPITAL</text>
-          </g>
-
-          <!-- Converging lines to core -->
-          <path class="tr-converge" d="M 130,250 C 170,265 190,290 212,305" />
-          <path class="tr-converge" d="M 130,360 C 170,345 190,320 212,305" />
-
-          <!-- Central partnership core -->
-          <g transform="translate(220, 305)">
-            <circle r="48" fill="url(#coreGlow)" />
-            <circle r="28" class="tr-core-ring-3" />
-            <circle r="20" class="tr-core-ring-2" />
-            <circle r="12" class="tr-core-ring-1" fill="#38bdf8" filter="url(#softGlow)" />
-          </g>
-
-          <!-- Rising trajectory path -->
-          <path id="trajectoryPath" class="tr-curve-bg"
-                d="M 220,305 C 330,295 410,255 500,205 S 760,85 870,55" />
-          <path id="trajectoryPathFg" class="tr-curve-fg"
-                d="M 220,305 C 330,295 410,255 500,205 S 760,85 870,55" />
-
-          <!-- Milestone nodes along the trajectory -->
-          <g class="tr-milestone" transform="translate(340, 265)">
-            <circle r="7" />
-            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Seed</text>
-          </g>
-          <g class="tr-milestone" transform="translate(470, 217)">
-            <circle r="7" />
-            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Growth</text>
-          </g>
-          <g class="tr-milestone" transform="translate(605, 158)">
-            <circle r="7" />
-            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Pre-IPO</text>
-          </g>
-          <g class="tr-milestone" transform="translate(745, 96)">
-            <circle r="7" />
-            <text x="0" y="-16" text-anchor="middle" class="tr-milestone-label">Credit Solutions</text>
-          </g>
-
-          <!-- End state: Enduring Business (stacked towers) -->
-          <g class="tr-enduring" transform="translate(870, 55)">
-            <rect x="-34" y="-12" width="14" height="62" rx="2" fill="url(#towerGrad)" opacity="0.55" />
-            <rect x="-16" y="-30" width="14" height="80" rx="2" fill="url(#towerGrad)" opacity="0.80" />
-            <rect x="2"   y="-48" width="14" height="98" rx="2" fill="url(#towerGrad)" filter="url(#softGlow)" />
-            <rect x="20"  y="-22" width="14" height="72" rx="2" fill="url(#towerGrad)" opacity="0.70" />
-            <!-- Windows -->
-            <g fill="rgba(10,11,15,0.6)">
-              <rect x="-30" y="-4"  width="6" height="2" />
-              <rect x="-30" y="8"   width="6" height="2" />
-              <rect x="-30" y="20"  width="6" height="2" />
-              <rect x="-12" y="-22" width="6" height="2" />
-              <rect x="-12" y="-10" width="6" height="2" />
-              <rect x="-12" y="2"   width="6" height="2" />
-              <rect x="-12" y="14"  width="6" height="2" />
-              <rect x="-12" y="26"  width="6" height="2" />
-              <rect x="6"   y="-40" width="6" height="2" />
-              <rect x="6"   y="-28" width="6" height="2" />
-              <rect x="6"   y="-16" width="6" height="2" />
-              <rect x="6"   y="-4"  width="6" height="2" />
-              <rect x="6"   y="8"   width="6" height="2" />
-              <rect x="6"   y="20"  width="6" height="2" />
-              <rect x="6"   y="32"  width="6" height="2" />
-              <rect x="24"  y="-14" width="6" height="2" />
-              <rect x="24"  y="-2"  width="6" height="2" />
-              <rect x="24"  y="10"  width="6" height="2" />
-              <rect x="24"  y="22"  width="6" height="2" />
-            </g>
-            <text y="78" text-anchor="middle" class="tr-end-label">ENDURING BUSINESS</text>
-          </g>
-
-          <!-- Traveling particle along the trajectory -->
-          <circle class="tr-traveler" r="5" fill="#38bdf8" filter="url(#softGlow)">
-            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
-              <mpath href="#trajectoryPath" />
-            </animateMotion>
-          </circle>
-          <circle class="tr-traveler-core" r="2.5" fill="#ffffff">
-            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
-              <mpath href="#trajectoryPath" />
-            </animateMotion>
-          </circle>
+<!-- ============ MISSION ============ -->
+<section id="mission">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-no">// 01</span><span class="sec-title">Our Mission</span></div>
+    <div class="mission-grid">
+      <p class="mission-quote reveal">Partnering with exceptional founders and management teams with <em>flexible private equity and debt capital</em> to build enduring technology businesses over time.</p>
+      <div class="traj reveal" role="img" aria-label="Chart showing partnership growth from Seed through Growth and Pre-IPO to Credit Solutions over time">
+        <svg viewBox="0 0 360 200" fill="none">
+          <line x1="20" y1="180" x2="345" y2="180" stroke="rgba(148,163,184,.25)"/>
+          <line x1="20" y1="180" x2="20" y2="12" stroke="rgba(148,163,184,.25)"/>
+          <path d="M20 172 C 110 168, 160 130, 220 86 S 320 24, 344 18" stroke="#5BA982" stroke-width="2"/>
+          <path d="M20 172 C 110 168, 160 130, 220 86 S 320 24, 344 18 L344 180 L20 180 Z" fill="url(#g1)" opacity=".35"/>
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2E8A5C"/><stop offset="1" stop-color="#2E8A5C" stop-opacity="0"/></linearGradient></defs>
+          <circle cx="58" cy="167" r="3.5" fill="#C8854A"/><circle cx="160" cy="130" r="3.5" fill="#C8854A"/><circle cx="252" cy="62" r="3.5" fill="#C8854A"/><circle cx="330" cy="22" r="3.5" fill="#C8854A"/>
+          <text x="48" y="155" fill="#94a3b8" font-size="9" font-family="IBM Plex Mono">SEED</text>
+          <text x="140" y="118" fill="#94a3b8" font-size="9" font-family="IBM Plex Mono">GROWTH</text>
+          <text x="226" y="50" fill="#94a3b8" font-size="9" font-family="IBM Plex Mono">PRE-IPO</text>
+          <text x="258" y="12" fill="#94a3b8" font-size="9" font-family="IBM Plex Mono">CREDIT SOLUTIONS</text>
+          <text x="300" y="194" fill="#64748b" font-size="9" font-family="IBM Plex Mono">TIME →</text>
         </svg>
+        <div class="traj-cap">Exceptional Founders × Flexible Capital → Enduring Business</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========== PORTFOLIO ========== -->
-  <section class="section portfolio" id="portfolio">
-    <span class="section-id" aria-hidden="true">// 02 — portfolio</span>
-    <div class="container">
-      <span class="section__label">Portfolio</span>
-      <h2 class="section__title">Our partners collectively invest early in technical pioneers and grow alongside founders, scaling regional innovations into worldwide industry leaders.</h2>
-      <p class="portfolio__sub">Together with our capital and ecosystem partners, we support companies from Seed to IPO to build enduring global technology businesses.</p>
-      <div class="portfolio__marquee">
-        <div class="portfolio__track">
-          <span class="portfolio__company">Klook</span>
-          <span class="portfolio__company">Gbike</span>
-          <span class="portfolio__company">XtalPi</span>
-          <span class="portfolio__company">OmniML</span>
-          <span class="portfolio__company">Conflux</span>
-          <span class="portfolio__company">SGLang</span>
-          <span class="portfolio__company">EigenAI</span>
-          <span class="portfolio__company">Infinigence</span>
-          <span class="portfolio__company">Anthropic</span>
-          <span class="portfolio__company">IDA</span>
-          <span class="portfolio__company">Innomatrix</span>
-          <span class="portfolio__company">Nunchaku AI</span>
-          <span class="portfolio__company">Tornado AI</span>
-          <span class="portfolio__company">Atto Research</span>
-          <span class="portfolio__company">Falcon Alpha</span>
-          <span class="portfolio__company">GetLinks</span>
-          <span class="portfolio__company">Zetta</span>
-          <span class="portfolio__company">TensorMill</span>
-          <span class="portfolio__company">Polar Bear Tech</span>
-          <!-- duplicate set for seamless loop -->
-          <span class="portfolio__company">Klook</span>
-          <span class="portfolio__company">Gbike</span>
-          <span class="portfolio__company">XtalPi</span>
-          <span class="portfolio__company">OmniML</span>
-          <span class="portfolio__company">Conflux</span>
-          <span class="portfolio__company">SGLang</span>
-          <span class="portfolio__company">EigenAI</span>
-          <span class="portfolio__company">Infinigence</span>
-          <span class="portfolio__company">Anthropic</span>
-          <span class="portfolio__company">IDA</span>
-          <span class="portfolio__company">Innomatrix</span>
-          <span class="portfolio__company">Nunchaku AI</span>
-          <span class="portfolio__company">Tornado AI</span>
-          <span class="portfolio__company">Atto Research</span>
-          <span class="portfolio__company">Falcon Alpha</span>
-          <span class="portfolio__company">GetLinks</span>
-          <span class="portfolio__company">Zetta</span>
-          <span class="portfolio__company">TensorMill</span>
-          <span class="portfolio__company">Polar Bear Tech</span>
+<div class="divider"></div>
+
+<!-- ============ THESIS / INTERACTIVE STACK ============ -->
+<section id="thesis" class="stack-section">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-no">// 02</span><span class="sec-title">Investment Thesis · Full-Stack AI</span></div>
+    <h2 class="reveal">Investing across the full AI stack — foundation to frontier.</h2>
+    <p class="lede reveal">Six strata of compounding value, from the picks-and-shovels of compute to autonomous agents acting in the physical world. Select a layer to see where we invest.</p>
+
+    <div class="stack-layout">
+      <div>
+        <div class="flow-label" aria-hidden="true"><span class="dn">ELECTRONS ↓</span><span class="up">↑ TOKENS</span></div>
+        <div class="strata" role="tablist" aria-label="AI stack layers" id="strata">
+          <!-- buttons injected in DOM order L1 bottom → L6 top via column-reverse -->
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ========== APPROACH ========== -->
-  <section class="section approach" id="approach">
-    <span class="section-id" aria-hidden="true">// 03 — approach</span>
-    <div class="container">
-      <span class="section__label">Investment Approach</span>
-      <h2 class="section__title section__title--left">Employing a sector driven approach, we invest in artificial intelligence and AI infrastructure businesses.</h2>
-
-      <div class="approach__grid">
-        <!-- Card 1 -->
-        <div class="card" data-animate>
-          <span class="card__index">01</span>
-          <div class="card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="card__title">Enabling Founders</h3>
-          <p class="card__text">We invest at the genesis of innovation, often at pre-seed or seed, across the entire AI value chain.</p>
-          <span class="card__corner card__corner--tl"></span>
-          <span class="card__corner card__corner--tr"></span>
-          <span class="card__corner card__corner--bl"></span>
-          <span class="card__corner card__corner--br"></span>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card" data-animate>
-          <span class="card__index">02</span>
-          <div class="card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-          </div>
-          <h3 class="card__title">Long-term Capital Partnership</h3>
-          <p class="card__text">We continue support with creative equity and debt capital solutions with ecosystem partners to source and scale outliers.</p>
-          <span class="card__corner card__corner--tl"></span>
-          <span class="card__corner card__corner--tr"></span>
-          <span class="card__corner card__corner--bl"></span>
-          <span class="card__corner card__corner--br"></span>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card" data-animate>
-          <span class="card__index">03</span>
-          <div class="card__icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
-          </div>
-          <h3 class="card__title">Active, Sector-driven</h3>
-          <p class="card__text">A long-term strategic partner, we invest where we have unique insights to source and scale outliers: industry defining LLMs, AI tooling and inference, AI-optimized semiconductors, vertical AI businesses, Blockchain x AI applications, digital infrastructure, robotics, advanced power generation and cooling.  <br><br> In-house corporate development capabilities to help accelerate growth through strategic acquisitions, operational improvement and AI/technology adoption.</p>
-          <span class="card__corner card__corner--tl"></span>
-          <span class="card__corner card__corner--tr"></span>
-          <span class="card__corner card__corner--bl"></span>
-          <span class="card__corner card__corner--br"></span>
-        </div>
+      <div class="stack-detail reveal" id="stackDetail" role="tabpanel" aria-live="polite">
+        <!-- injected -->
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========== THESIS (AI VALUE CHAIN + INFRASTRUCTURE FOCUS) ========== -->
-  <section class="section thesis" id="thesis">
-    <span class="section-id" aria-hidden="true">// 04 — thesis</span>
-    <div class="container">
-      <span class="section__label">Investment Thesis &middot; Full-Stack AI</span>
-      <h2 class="section__title">Investing Across the Full AI Stack <span class="thesis__accent">— Foundation to Frontier</span></h2>
-      <p class="approach__sub">Three strata of compounding value &mdash; from the picks-and-shovels of compute, to the intelligence layer, to autonomous agents acting in the physical world.</p>
+<div class="divider"></div>
 
-      <!-- Three animated pillars: Infrastructure | Models & Tooling | Vertical Autonomy -->
-      <div class="ap-pillars ap-pillars--three">
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-no">// 03</span><span class="sec-title">Illustrative Portfolio</span></div>
+    <h2 class="reveal">Backing technical pioneers, scaling regional innovations into worldwide industry leaders.</h2>
+    <p class="lede reveal">Together with our capital and ecosystem partners, some of the companies our partners have supported from Seed to IPO include the following.</p>
+    <div class="filters reveal" id="filters" role="group" aria-label="Filter portfolio by layer"></div>
+    <div class="port-grid" id="portGrid"></div>
+  </div>
+</section>
 
-        <!-- Pillar 01 — AI Infrastructure (animated layer stack) -->
-        <article class="ap-pillar ap-pillar--infra" data-animate>
-          <span class="ap-pillar__num">01</span>
-          <div class="ap-pillar__viz" aria-hidden="true">
-            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" class="ap-svg">
-              <defs>
-                <filter id="apG2" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
+<div class="divider"></div>
 
-              <line x1="160" y1="155" x2="160" y2="32" stroke="rgba(56,189,248,0.18)" stroke-width="1" stroke-dasharray="2 4"/>
-
-              <rect x="55" y="138" width="210" height="20" rx="2.5" fill="rgba(30,105,120,0.28)" stroke="#1e6978" stroke-width="1"/>
-              <text x="75" y="151" fill="#9aa6b2" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5">L1 &middot; POWER &amp; LAND</text>
-
-              <rect x="55" y="108" width="210" height="20" rx="2.5" fill="rgba(40,118,196,0.32)" stroke="#2876c4" stroke-width="1"/>
-              <text x="75" y="121" fill="#b8c5d8" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5">L2 &middot; DATA CENTERS</text>
-
-              <rect x="55" y="78" width="210" height="20" rx="2.5" fill="rgba(43,179,201,0.32)" stroke="#2bb3c9" stroke-width="1"/>
-              <text x="75" y="91" fill="#c8dde0" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5">L3 &middot; GPU &amp; SILICON</text>
-
-              <rect x="55" y="48" width="210" height="20" rx="2.5" fill="rgba(56,189,248,0.38)" stroke="#38bdf8" stroke-width="1"/>
-              <text x="75" y="61" fill="#dceefa" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="1.5">L4 &middot; INFERENCE STACK</text>
-
-              <text x="285" y="151" fill="#64748b" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="end" letter-spacing="1.5">ELECTRONS</text>
-              <text x="285" y="42"  fill="#38bdf8" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="end" letter-spacing="1.5">TOKENS &uarr;</text>
-
-              <circle r="3.5" fill="#ffffff" filter="url(#apG2)">
-                <animate attributeName="cy" values="160;148;118;88;58;30" keyTimes="0;0.08;0.32;0.56;0.80;1" dur="3.4s" repeatCount="indefinite"/>
-                <animate attributeName="cx" values="160" dur="3.4s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="0;1;1;1;1;0" keyTimes="0;0.08;0.32;0.56;0.80;1" dur="3.4s" repeatCount="indefinite"/>
-              </circle>
-              <circle r="2.5" fill="#38bdf8" filter="url(#apG2)">
-                <animate attributeName="cy" values="160;148;118;88;58;30" keyTimes="0;0.08;0.32;0.56;0.80;1" dur="3.4s" begin="1.3s" repeatCount="indefinite"/>
-                <animate attributeName="cx" values="160" dur="3.4s" begin="1.3s" repeatCount="indefinite"/>
-                <animate attributeName="opacity" values="0;0.9;0.9;0.9;0.9;0" keyTimes="0;0.08;0.32;0.56;0.80;1" dur="3.4s" begin="1.3s" repeatCount="indefinite"/>
-              </circle>
-            </svg>
-            <span class="ap-pillar__viz-tag ap-pillar__viz-tag--blue">FOUNDATION LAYER</span>
-          </div>
-          <div class="ap-pillar__body">
-            <h3 class="ap-pillar__title">AI Infrastructure</h3>
-            <p class="ap-pillar__text">Power and land, data centers, AI-optimized silicon (ASICs/GPUs), proprietary power pipelines, energy storage and cooling — the picks-and-shovels of the AI era.</p>
-          </div>
-        </article>
-
-        <!-- Pillar 02 — AI Models & Tooling (animated neural network) -->
-        <article class="ap-pillar ap-pillar--models" data-animate>
-          <span class="ap-pillar__num">02</span>
-          <div class="ap-pillar__viz" aria-hidden="true">
-            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" class="ap-svg">
-              <defs>
-                <filter id="apG1" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="2.5" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <radialGradient id="apCore1" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%"   stop-color="#2e9e5f" stop-opacity="0.55"/>
-                  <stop offset="100%" stop-color="#2e9e5f" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-
-              <g stroke="rgba(46,158,95,0.4)" stroke-width="1" fill="none">
-                <line x1="55"  y1="40"  x2="160" y2="90"/>
-                <line x1="55"  y1="90"  x2="160" y2="90"/>
-                <line x1="55"  y1="140" x2="160" y2="90"/>
-                <line x1="265" y1="40"  x2="160" y2="90"/>
-                <line x1="265" y1="90"  x2="160" y2="90"/>
-                <line x1="265" y1="140" x2="160" y2="90"/>
-              </g>
-
-              <g fill="#0a0b0f" stroke="#2e9e5f" stroke-width="1.6">
-                <circle cx="55"  cy="40"  r="7"/>
-                <circle cx="55"  cy="90"  r="7"/>
-                <circle cx="55"  cy="140" r="7"/>
-                <circle cx="265" cy="40"  r="7"/>
-                <circle cx="265" cy="90"  r="7"/>
-                <circle cx="265" cy="140" r="7"/>
-              </g>
-
-              <circle cx="160" cy="90" r="32" fill="url(#apCore1)">
-                <animate attributeName="r" values="28;38;28" dur="2.4s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="160" cy="90" r="15" fill="#2e9e5f" filter="url(#apG1)"/>
-              <circle cx="160" cy="90" r="6" fill="#ffffff"/>
-
-              <circle r="2.2" fill="#ffffff" filter="url(#apG1)">
-                <animateMotion dur="2.6s" repeatCount="indefinite" path="M 55 40 L 160 90"/>
-                <animate attributeName="opacity" values="0;1;0" dur="2.6s" repeatCount="indefinite"/>
-              </circle>
-              <circle r="2.2" fill="#ffffff" filter="url(#apG1)">
-                <animateMotion dur="2.6s" begin="0.7s" repeatCount="indefinite" path="M 55 140 L 160 90"/>
-                <animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="0.7s" repeatCount="indefinite"/>
-              </circle>
-              <circle r="2.2" fill="#ffffff" filter="url(#apG1)">
-                <animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M 265 90 L 160 90"/>
-                <animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="1.3s" repeatCount="indefinite"/>
-              </circle>
-              <circle r="2.2" fill="#ffffff" filter="url(#apG1)">
-                <animateMotion dur="2.6s" begin="1.9s" repeatCount="indefinite" path="M 265 40 L 160 90"/>
-                <animate attributeName="opacity" values="0;1;0" dur="2.6s" begin="1.9s" repeatCount="indefinite"/>
-              </circle>
-            </svg>
-            <span class="ap-pillar__viz-tag">INTELLIGENCE LAYER</span>
-          </div>
-          <div class="ap-pillar__body">
-            <h3 class="ap-pillar__title">AI Models &amp; Tooling</h3>
-            <p class="ap-pillar__text">Frontier and specialized foundation models, RL-distilled architectures, inference optimization and serving, MLOps, and the software layer powering production AI workloads.</p>
-          </div>
-        </article>
-
-        <!-- Pillar 03 — Vertical Autonomy (AI agent over physical world) -->
-        <article class="ap-pillar ap-pillar--autonomy" data-animate>
-          <span class="ap-pillar__num">03</span>
-          <div class="ap-pillar__viz" aria-hidden="true">
-            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet" class="ap-svg">
-              <defs>
-                <filter id="apG3" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="3" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <radialGradient id="apCore3" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%"   stop-color="#a78bfa" stop-opacity="0.55"/>
-                  <stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-
-              <!-- Subtle physical-world grid floor -->
-              <g stroke="rgba(167,139,250,0.13)" stroke-width="0.6">
-                <line x1="30"  y1="135" x2="290" y2="135"/>
-                <line x1="30"  y1="150" x2="290" y2="150"/>
-                <line x1="30"  y1="165" x2="290" y2="165"/>
-                <line x1="60"  y1="125" x2="60"  y2="172"/>
-                <line x1="120" y1="125" x2="120" y2="172"/>
-                <line x1="200" y1="125" x2="200" y2="172"/>
-                <line x1="260" y1="125" x2="260" y2="172"/>
-              </g>
-
-              <!-- Industrial objects on the floor -->
-              <rect x="50"  y="138" width="22" height="20" rx="1" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
-              <rect x="109" y="132" width="24" height="26" rx="1" fill="rgba(167,139,250,0.28)" stroke="#a78bfa" stroke-width="1.4"/>
-              <rect x="190" y="140" width="22" height="18" rx="1" fill="rgba(167,139,250,0.18)" stroke="rgba(167,139,250,0.5)" stroke-width="1"/>
-
-              <!-- Detection brackets around the focused object -->
-              <g stroke="#a78bfa" stroke-width="1.4" fill="none">
-                <path d="M 105 128 L 105 124 L 110 124"/>
-                <path d="M 132 124 L 137 124 L 137 128"/>
-                <path d="M 105 166 L 105 162 L 110 162"/>
-                <path d="M 132 162 L 137 162 L 137 166"/>
-              </g>
-              <text x="111" y="121" fill="#a78bfa" font-family="JetBrains Mono, monospace" font-size="7" letter-spacing="1">DETECT</text>
-
-              <!-- Detection beam from agent down to focused object -->
-              <line x1="160" y1="62" x2="121" y2="145" stroke="rgba(167,139,250,0.4)" stroke-width="1" stroke-dasharray="2 3"/>
-
-              <!-- AI agent eye (top) -->
-              <circle cx="160" cy="48" r="30" fill="url(#apCore3)">
-                <animate attributeName="r" values="26;34;26" dur="2.8s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="160" cy="48" r="20" fill="none" stroke="rgba(167,139,250,0.55)" stroke-width="1" stroke-dasharray="3 3" transform-origin="160 48">
-                <animateTransform attributeName="transform" type="rotate" from="0 160 48" to="360 160 48" dur="14s" repeatCount="indefinite"/>
-              </circle>
-              <circle cx="160" cy="48" r="13" fill="#a78bfa" filter="url(#apG3)"/>
-              <circle cx="160" cy="48" r="5" fill="#ffffff"/>
-              <!-- crosshair -->
-              <g stroke="#ffffff" stroke-width="1" opacity="0.9">
-                <line x1="160" y1="38" x2="160" y2="42"/>
-                <line x1="160" y1="54" x2="160" y2="58"/>
-                <line x1="150" y1="48" x2="146" y2="48"/>
-                <line x1="170" y1="48" x2="174" y2="48"/>
-              </g>
-
-              <!-- Pulsing detection particle along the beam -->
-              <circle r="3" fill="#ffffff" filter="url(#apG3)">
-                <animateMotion dur="2.4s" repeatCount="indefinite" path="M 160 62 L 121 145"/>
-                <animate attributeName="opacity" values="0;1;0" dur="2.4s" repeatCount="indefinite"/>
-              </circle>
-
-              <!-- Side labels -->
-              <text x="30"  y="178" fill="#64748b" font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="1.5">PHYSICAL WORLD</text>
-              <text x="290" y="30"  fill="#a78bfa" font-family="JetBrains Mono, monospace" font-size="8" text-anchor="end" letter-spacing="1.5">AI AGENT</text>
-            </svg>
-            <span class="ap-pillar__viz-tag ap-pillar__viz-tag--violet">APPLICATION LAYER</span>
-          </div>
-          <div class="ap-pillar__body">
-            <h3 class="ap-pillar__title">Vertical Autonomy</h3>
-            <p class="ap-pillar__text">AI and robotics applied to high-value industrial verticals — agents that perceive, decide, and act in the physical world. Compounding data flywheels in machining, manufacturing, mobility, and operations.</p>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Bridge to value chain tiles -->
-      <div class="thesis-bridge" aria-hidden="true">
-        <span class="thesis-bridge__line"></span>
-        <span class="thesis-bridge__label">DEPLOYED ACROSS THE FULL AI VALUE CHAIN</span>
-        <span class="thesis-bridge__line"></span>
-      </div>
-
-      <div class="thesis__grid">
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">LLM</span>
-          <span class="thesis__name">Foundation Models</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&lt;/&gt;</span>
-          <span class="thesis__name">AI Tooling &amp; Inference</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&#9670;</span>
-          <span class="thesis__name">AI Semiconductors</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&#9041;</span>
-          <span class="thesis__name">Vertical AI Autonomy</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&#8734;</span>
-          <span class="thesis__name">Blockchain x AI</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&#9881;</span>
-          <span class="thesis__name">Digital Infrastructure</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&#9737;</span>
-          <span class="thesis__name">Robotics</span>
-        </div>
-        <div class="thesis__item" data-animate>
-          <span class="thesis__icon">&#9889;</span>
-          <span class="thesis__name">Power &amp; Cooling</span>
-        </div>
-      </div>
+<!-- ============ APPROACH ============ -->
+<section id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-no">// 04</span><span class="sec-title">Investment Approach</span></div>
+    <h2 class="reveal">A sector-driven approach to artificial intelligence and AI infrastructure.</h2>
+    <div class="appr-grid">
+      <div class="acard reveal"><div class="a-line"></div><div class="a-no">01</div><h3>Enabling Founders</h3><p>We invest at the genesis of innovation, often at pre-seed or seed, across the entire AI value chain.</p></div>
+      <div class="acard reveal"><div class="a-line"></div><div class="a-no">02</div><h3>Long-term Capital Partnership</h3><p>We continue support with creative equity and debt capital solutions alongside ecosystem partners to source and scale outliers.</p></div>
+      <div class="acard reveal"><div class="a-line"></div><div class="a-no">03</div><h3>Active, Sector-driven</h3><p>Industry-defining LLMs, AI tooling and inference, AI-optimized semiconductors, vertical AI, Blockchain×AI, digital infrastructure, robotics, advanced power and cooling — with in-house corporate development to accelerate growth through strategic acquisitions, operational improvement and AI adoption.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========== EXPERIENCE ========== -->
-  <section class="section experience" id="experience">
-    <span class="section-id" aria-hidden="true">// 05 — experience</span>
-    <div class="container">
-      <span class="section__label">Why Increment</span>
-      <h2 class="section__title section__title--left">World Class Investment Experience</h2>
-      <p class="approach__sub">Our investment approach in early-to-growth stage companies is informed by collective experience across early-stage venture, growth equity, buyouts, PIPEs, special situations credit, operational turnarounds, spin-offs and restructurings.</p>
+<div class="divider"></div>
 
-      <div class="experience__grid">
-        <div class="exp-card" data-animate>
-          <h4 class="exp-card__title">Multidisciplinary Background</h4>
-          <p class="exp-card__text">Venture, Private Equity, Private Credit, Special Situations — a flexible, multi-asset approach to funding innovation at every stage.</p>
-        </div>
-        <div class="exp-card" data-animate>
-          <h4 class="exp-card__title">Top-Tier Institutional Experience</h4>
-          <p class="exp-card__text">Unique blend of public and private investment experience at world class organizations including Warburg Pincus, Clearlake Capital, Goldman Sachs, UBS and JPMorgan.</p>
-        </div>
-        <div class="exp-card" data-animate>
-          <h4 class="exp-card__title">Technology Focus</h4>
-          <p class="exp-card__text">Employing a sector driven approach, we invest in consumer technology, blockchain, artificial intelligence and AI/Digital infrastructure businesses.</p>
-        </div>
-        <div class="exp-card" data-animate>
-          <h4 class="exp-card__title">Deep Technical Expertise</h4>
-          <p class="exp-card__text">Strong technical expertise from leaders at Google, Microsoft, Amazon, and AMD — enabling diligence and value creation at every stage.</p>
-        </div>
-      </div>
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-no">// 05</span><span class="sec-title">Why Increment</span></div>
+    <h2 class="reveal">World-class investment experience.</h2>
+    <p class="lede reveal">Our approach to early-to-growth stage companies is informed by collective experience across early-stage venture, growth equity, buyouts, PIPEs, special situations credit, operational turnarounds, spin-offs and restructurings.</p>
+    <div class="exp-grid">
+      <div class="ecard reveal"><h4>Multidisciplinary Background</h4><p>Venture, private equity, private credit, special situations — a flexible, multi-asset approach to funding innovation at every stage.</p></div>
+      <div class="ecard reveal"><h4>Top-Tier Institutional Experience</h4><p>A unique blend of public and private investment experience at world-class organizations across global asset management and investment banking.</p></div>
+      <div class="ecard reveal"><h4>Technology Focus</h4><p>A sector-driven approach to consumer technology, blockchain, artificial intelligence and AI/digital infrastructure businesses.</p></div>
+      <div class="ecard reveal"><h4>Deep Technical Expertise</h4><p>Engineering and product leadership from global technology leaders — enabling diligence and value creation at every stage.</p></div>
     </div>
-  </section>
-
-  <!-- ========== CONTACT ========== -->
-  <section class="section contact" id="contact">
-    <span class="section-id" aria-hidden="true">// 06 — contact</span>
-    <div class="container contact__inner">
-      <span class="section__label">Get In Touch</span>
-      <h2 class="section__title">Have a compelling AI company?<br />We'd love to hear from you.</h2>
-      <a href="mailto:info@incrementcap.com" class="btn btn--primary btn--lg">
-        Pitch Us
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-      </a>
-      <p class="contact__locations">Hong Kong &middot; Shanghai &middot; Seattle</p>
+    <div class="badges reveal">
+      <span class="badge">Google</span><span class="badge">Microsoft</span><span class="badge">Amazon</span><span class="badge">AMD</span><span class="badge">Warburg Pincus</span><span class="badge">Clearlake Capital</span><span class="badge">Apax Partners</span><span class="badge">Capital Group</span><span class="badge">Goldman Sachs</span><span class="badge">Credit Suisse</span><span class="badge">UBS</span><span class="badge">JPMorgan</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <a href="#" class="footer__logo" aria-label="Increment Capital home">
-        <svg class="logo-svg logo-svg--sm"><use href="#ic-logo"/></svg>
-      </a>
-      <nav class="footer__nav">
-        <a href="#mission">Mission</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#approach">Approach</a>
-        <a href="#thesis">Thesis</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <p class="footer__copy">&copy; 2026 Increment Capital. All rights reserved.</p>
+<div class="divider"></div>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head reveal" style="justify-content:center"><span class="sec-no">// 06</span><span class="sec-title">Get In Touch</span></div>
+    <h2 class="reveal">Have a compelling AI company? We'd love to hear from you.</h2>
+    <p class="lede reveal">Tell us what you're building, the layer of the stack you sit in, and where you are in your journey — pre-seed to pre-IPO.</p>
+    <a class="btn primary reveal" href="mailto:info@incrementcap.com">Pitch Us → info@incrementcap.com</a>
+    <div class="coords reveal">
+      <div><b>HONG KONG</b>22.28°N · 114.17°E</div>
+      <div><b>SHANGHAI</b>31.23°N · 121.47°E</div>
+      <div><b>SEATTLE</b>47.61°N · −122.33°W</div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<footer>
+  <a class="brand" href="#top" aria-label="Increment Capital home"><svg class="logo-svg logo-svg--sm"><use href="#ic-logo"/></svg></a>
+  <div class="f-l">© 2026 Increment Capital. All rights reserved. · Licensed by the SFC (Hong Kong); affiliates licensed by AMAC (Shanghai).</div>
+  <div class="f-links">
+    <a href="#mission">Mission</a><a href="#thesis">Thesis</a><a href="#portfolio">Portfolio</a><a href="#approach">Approach</a><a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+/* ================= DATA ================= */
+const LAYERS = [
+  {id:"power",  tag:"L1", name:"Power & Land",        sub:"ELECTRONS IN",
+   blurb:"Proprietary power pipelines, shovel-ready land, energy storage and advanced cooling — the scarcest inputs of the AI era. Compute follows the electron.",
+   detail:"Grid interconnects, behind-the-meter generation, hydro and modular power, thermal management. The foundation layer where capacity is won years before tokens are served."},
+  {id:"dc",     tag:"L2", name:"Data Centers",        sub:"PURPOSE-BUILT SHELLS",
+   blurb:"Purpose-built AI data centers engineered for extreme rack density, liquid cooling and rapid modular deployment across Asia and the U.S.",
+   detail:"Prefabricated modular builds, high-density liquid-cooled halls, and hosting platforms that convert megawatts into monetizable compute."},
+  {id:"silicon",tag:"L3", name:"GPU & Silicon",       sub:"AI-OPTIMIZED COMPUTE",
+   blurb:"AI-optimized semiconductors — GPUs, ASICs and accelerators — and the fleets that deploy them at scale.",
+   detail:"From frontier accelerator fleets to inference-optimized ASICs, we back the compute substrate the intelligence layer runs on."},
+  {id:"inference",tag:"L4", name:"Inference & Tooling", sub:"SERVING THE TOKEN ECONOMY",
+   blurb:"Inference optimization and serving, MLOps and the software layer powering production AI workloads — where electrons become tokens.",
+   detail:"High-throughput serving engines, kernel- and quantization-level optimization, token factories and the MaaS platforms monetizing compute."},
+  {id:"models", tag:"L5", name:"Models & Intelligence", sub:"FOUNDATION TO FRONTIER",
+   blurb:"Frontier and specialized foundation models, RL-distilled architectures and the labs defining the intelligence layer.",
+   detail:"Industry-defining LLMs and specialized models — the layer where capability compounds and ecosystems consolidate."},
+  {id:"agents", tag:"L6", name:"Vertical Autonomy",   sub:"AGENTS IN THE PHYSICAL WORLD",
+   blurb:"AI and robotics applied to high-value industrial verticals — agents that perceive, decide and act, with compounding data flywheels.",
+   detail:"Machining, manufacturing, mobility and operations: vertical AI businesses where proprietary data loops create durable moats."}
+];
+
+const PORTFOLIO = [
+  {name:"Anthropic",      layer:"models",        stage:"Growth"},
+  {name:"Infinigence",    layer:"inference",     stage:"Growth"},
+  {name:"Innomatrix",     layer:["power","dc"],  stage:"Seed"},
+  {name:"Polar Bear Tech",layer:"silicon",       stage:"Growth"},
+  {name:"SGLang",         layer:"inference",     stage:"Seed"},
+  {name:"EigenAI",        layer:"inference",     stage:"Acquired"},
+  {name:"Nunchaku AI",    layer:"inference",     stage:"Seed"},
+  {name:"TensorMill",     layer:"agents",        stage:"Seed"},
+  {name:"Atto Research",  layer:"dc",            stage:"Growth"},
+  {name:"XtalPi",         layer:"agents",        stage:"IPO"},
+  {name:"OmniML",         layer:"inference",     stage:"Acquired"},
+  {name:"Tornado AI",     layer:"agents",        stage:"Seed"},
+  {name:"Zetta",          layer:"dc",            stage:"Seed"},
+  {name:"Falcon Alpha",   layer:"agents",        stage:"Seed"},
+  {name:"Klook",          layer:"agents",        stage:"Growth"},
+  {name:"GBike",          layer:"agents",        stage:"Growth"}
+];
+const LAYER_NAMES = Object.fromEntries(LAYERS.map(l=>[l.id,l.name]));
+
+/* ================= STACK ================= */
+const strata = document.getElementById('strata');
+const detail = document.getElementById('stackDetail');
+LAYERS.forEach((l,i)=>{
+  const b=document.createElement('button');
+  b.className='stratum'; b.role='tab'; b.id='tab-'+l.id; b.setAttribute('aria-selected', i===3?'true':'false');
+  b.innerHTML=`<span class="tag">${l.tag}</span><span><span class="s-name">${l.name}</span><div class="s-sub">${l.sub}</div></span>`;
+  b.addEventListener('click',()=>selectLayer(l.id));
+  strata.appendChild(b);
+});
+function selectLayer(id){
+  const l=LAYERS.find(x=>x.id===id);
+  document.querySelectorAll('.stratum').forEach(b=>{
+    const on=b.id==='tab-'+id;
+    b.classList.toggle('active',on); b.setAttribute('aria-selected',on);
+  });
+  const cos=PORTFOLIO.filter(p=>(Array.isArray(p.layer)?p.layer:[p.layer]).includes(id));
+  detail.innerHTML=`
+    <div class="d-tag">${l.tag} · ${l.sub}</div>
+    <h3>${l.name}</h3>
+    <p>${l.blurb}</p>
+    <p style="margin-top:12px;font-size:14px;color:var(--faint)">${l.detail}</p>
+    <div class="d-cos">
+      <div class="d-cos-lbl">Where We've Invested</div>
+      <div class="chiprow">${cos.length?cos.map(c=>`<span class="chip lit">${c.name}</span>`).join(''):'<span class="chip">Actively sourcing</span>'}</div>
+      <div style="margin-top:18px"><a class="btn" href="#portfolio" style="font-size:12px;padding:9px 18px">View in Portfolio ↓</a></div>
+    </div>`;
+  detail.classList.add('visible');
+}
+selectLayer('inference');
+
+/* ================= PORTFOLIO GRID + FILTERS ================= */
+const grid=document.getElementById('portGrid');
+PORTFOLIO.forEach(p=>{
+  const layers=Array.isArray(p.layer)?p.layer:[p.layer];
+  const c=document.createElement('div');
+  c.className='pcard reveal'; c.dataset.layer=layers.join(' ');
+  c.innerHTML=`<div class="p-name">${p.name}</div>
+  <div class="p-meta"><span class="layer">${layers.map(l=>LAYER_NAMES[l]).join(' · ')}</span><span>${p.stage}</span></div>`;
+  grid.appendChild(c);
+});
+const filters=document.getElementById('filters');
+const fAll=[{id:'all',name:'All'},...LAYERS.map(l=>({id:l.id,name:l.name}))];
+fAll.forEach((f,i)=>{
+  const b=document.createElement('button');
+  b.className='fbtn'+(i===0?' active':''); b.textContent=f.name;
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.querySelectorAll('.pcard').forEach(card=>{
+      card.classList.toggle('dim', f.id!=='all' && !card.dataset.layer.split(' ').includes(f.id));
+    });
+  });
+  filters.appendChild(b);
+});
+
+/* ================= NAV / PROGRESS / REVEAL ================= */
+const nav=document.getElementById('nav'), prog=document.getElementById('progress');
+addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',scrollY>40);
+  const h=document.documentElement;
+  prog.style.width=(scrollY/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+const navToggle=document.getElementById('navToggle'), navLinks=document.getElementById('navLinks');
+navToggle.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded',open); navToggle.textContent=open?'CLOSE':'MENU';
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open'); navToggle.textContent='MENU';
+}));
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const obs=new IntersectionObserver(es=>{
+  es.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'), reduce?0:i*55); obs.unobserve(e.target);} });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ================= FOCUS REEL ================= */
+(function(){
+  const cv=document.getElementById('reelCanvas'), ctx=cv.getContext('2d');
+  const W=cv.width, H=cv.height;
+  const GREEN='#5BA982', GREEN_D='#2E8A5C', COPPER='#C8854A', PAPER='#e2e8f0', MUTED='#94a3b8', FAINT='#3a4a52';
+  const SCENES=[
+    {id:'robotics',  label:'PHYSICAL AUTONOMY'},
+    {id:'llm',       label:'AI · LLM'},
+    {id:'chips',     label:'AI SILICON'},
+    {id:'datacenter',label:'DATA CENTERS'},
+    {id:'inference', label:'AI INFERENCE'}
+  ];
+  const SCENE_DUR=5000, FADE=600;
+  let playing=true, sceneIdx=0, sceneStart=performance.now(), raf;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- helpers ---- */
+  function mono(s,x,y,size,color,align){ctx.font=size+'px "IBM Plex Mono", monospace';ctx.fillStyle=color;ctx.textAlign=align||'left';ctx.fillText(s,x,y);}
+  function grid(alpha){
+    ctx.strokeStyle='rgba(148,163,184,'+(0.07*alpha)+')';ctx.lineWidth=1;
+    for(let x=0;x<=W;x+=64){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<=H;y+=64){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  }
+  function sceneTitle(t,alpha,big,small){
+    ctx.globalAlpha=alpha;
+    mono(small,70,108,13,COPPER);
+    ctx.font='500 44px "Source Serif 4", Georgia, serif';ctx.fillStyle=PAPER;ctx.textAlign='left';
+    ctx.fillText(big,68,160);
+    ctx.globalAlpha=1;
+  }
+
+  /* ---- Scene 1: Robotics — articulated arm ---- */
+  function drawRobotics(t,a){
+    ctx.globalAlpha=a; grid(a);
+    sceneTitle(t,a,'Physical Autonomy','01 · PHYSICAL AUTONOMY — AGENTS IN THE PHYSICAL WORLD');
+    const bx=820,by=440;                       // base
+    const a1=-1.15+Math.sin(t*Math.PI*2)*0.35; // shoulder
+    const a2=0.9+Math.cos(t*Math.PI*2)*0.55;   // elbow
+    const L1=170,L2=140;
+    const jx=bx+Math.cos(a1)*L1, jy=by+Math.sin(a1)*L1;
+    const ex=jx+Math.cos(a1+a2)*L2, ey=jy+Math.sin(a1+a2)*L2;
+    // floor
+    ctx.strokeStyle='rgba(148,163,184,.3)';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(620,by+24);ctx.lineTo(1180,by+24);ctx.stroke();
+    // target conveyor dots
+    for(let i=0;i<5;i++){const x=640+((t*260+i*120)%560);
+      ctx.fillStyle=i%2?COPPER:GREEN_D;ctx.globalAlpha=a*.8;
+      ctx.fillRect(x,by+10,10,10);ctx.globalAlpha=a;}
+    // base
+    ctx.fillStyle='#13202e';ctx.strokeStyle=MUTED;ctx.lineWidth=2;
+    ctx.beginPath();ctx.roundRect(bx-34,by,68,26,5);ctx.fill();ctx.stroke();
+    // segments
+    ctx.lineCap='round';
+    ctx.strokeStyle=GREEN;ctx.lineWidth=10;
+    ctx.beginPath();ctx.moveTo(bx,by);ctx.lineTo(jx,jy);ctx.stroke();
+    ctx.strokeStyle=GREEN_D;ctx.lineWidth=8;
+    ctx.beginPath();ctx.moveTo(jx,jy);ctx.lineTo(ex,ey);ctx.stroke();
+    // joints
+    [[bx,by,9],[jx,jy,7]].forEach(([x,y,r])=>{ctx.fillStyle='#0a0b0f';ctx.strokeStyle=PAPER;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();ctx.stroke();});
+    // gripper
+    const g=0.5+0.5*Math.sin(t*Math.PI*4);
+    ctx.strokeStyle=COPPER;ctx.lineWidth=4;
+    ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex+14,ey+14+g*6);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex-6,ey+18+g*6);ctx.stroke();
+    // end-effector trace
+    ctx.strokeStyle='rgba(91,169,130,.35)';ctx.lineWidth=1.5;ctx.setLineDash([3,6]);
+    ctx.beginPath();
+    for(let k=0;k<=40;k++){const tt=k/40;
+      const b1=-1.15+Math.sin(tt*Math.PI*2)*0.35, b2=0.9+Math.cos(tt*Math.PI*2)*0.55;
+      const px=bx+Math.cos(b1)*L1+Math.cos(b1+b2)*L2, py=by+Math.sin(b1)*L1+Math.sin(b1+b2)*L2;
+      k?ctx.lineTo(px,py):ctx.moveTo(px,py);}
+    ctx.stroke();ctx.setLineDash([]);
+    mono('PERCEIVE → DECIDE → ACT',70,220,12,MUTED);
+    mono('DATA FLYWHEEL: MACHINING · MANUFACTURING · MOBILITY',70,244,11,FAINT);
+    ctx.globalAlpha=1;
+  }
+
+  /* ---- Scene 2: LLM — attention graph + token stream ---- */
+  const TOKENS=['the','model','attends','to','context','and','predicts','the','next','token','—','intelligence','compounds'];
+  function drawLLM(t,a){
+    ctx.globalAlpha=a; grid(a);
+    sceneTitle(t,a,'Models & Intelligence','02 · LLM — FOUNDATION TO FRONTIER');
+    // 3-layer graph
+    const layers=[[760,5],[940,7],[1120,4]], nodes=[];
+    layers.forEach(([x,n],li)=>{const col=[];for(let i=0;i<n;i++){col.push([x,150+i*(260/(n-1||1))]);}nodes.push(col);});
+    // edges with traveling pulses
+    for(let li=0;li<nodes.length-1;li++){
+      nodes[li].forEach((p,pi)=>nodes[li+1].forEach((q,qi)=>{
+        ctx.strokeStyle='rgba(91,169,130,.12)';ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(q[0],q[1]);ctx.stroke();
+        const ph=(t*2+(pi*0.13+qi*0.07+li*0.3))%1;
+        if((pi+qi*3+li*5)%4===0){
+          const x=p[0]+(q[0]-p[0])*ph, y=p[1]+(q[1]-p[1])*ph;
+          ctx.fillStyle=GREEN;ctx.globalAlpha=a*(1-Math.abs(ph-0.5)*1.6);
+          ctx.beginPath();ctx.arc(x,y,3,0,7);ctx.fill();ctx.globalAlpha=a;}
+      }));
+    }
+    nodes.flat().forEach(([x,y],i)=>{
+      const pulse=0.6+0.4*Math.sin(t*Math.PI*4+i);
+      ctx.fillStyle='#0a0b0f';ctx.strokeStyle=GREEN;ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.arc(x,y,6+pulse*2,0,7);ctx.fill();ctx.stroke();
+    });
+    // streaming tokens
+    const shown=Math.floor(t*TOKENS.length*1.4)%(TOKENS.length+4);
+    let x=70;ctx.textAlign='left';
+    for(let i=0;i<Math.min(shown,TOKENS.length);i++){
+      ctx.font='13px "IBM Plex Mono", monospace';
+      const w=ctx.measureText(TOKENS[i]).width+26;
+      ctx.strokeStyle=i===Math.min(shown,TOKENS.length)-1?GREEN:'rgba(148,163,184,.3)';
+      ctx.fillStyle=i===Math.min(shown,TOKENS.length)-1?GREEN:MUTED;
+      ctx.lineWidth=1;ctx.strokeRect(x,300,w,30);
+      ctx.fillText(TOKENS[i],x+12,320);
+      x+=w+8; if(x>620)break;
+    }
+    // caret
+    if(Math.sin(t*Math.PI*10)>0){ctx.fillStyle=GREEN;ctx.fillRect(Math.min(x,620)+4,302,2,26);}
+    mono('NEXT-TOKEN PREDICTION · RL-DISTILLED ARCHITECTURES',70,380,11,FAINT);
+    mono('ATTENTION',940,118,10,FAINT,'center');
+    ctx.globalAlpha=1;
+  }
+
+  /* ---- Scene 3: AI Silicon — die + traces ---- */
+  function drawChips(t,a){
+    ctx.globalAlpha=a; grid(a);
+    sceneTitle(t,a,'AI-Optimized Silicon','03 · CHIPS — GPU / ASIC / ACCELERATORS');
+    const cx=920,cy=300,sz=150;
+    // radiating manhattan traces
+    ctx.lineWidth=1.5;
+    for(let i=0;i<16;i++){
+      const ang=i/16*Math.PI*2, dir=[Math.round(Math.cos(ang)),Math.round(Math.sin(ang))];
+      const sx=cx+(sz/2)*Math.sign(Math.cos(ang)||1)*(Math.abs(Math.cos(ang))>.4?1:Math.cos(ang)*2.4),
+            sy=cy+(sz/2)*Math.sign(Math.sin(ang)||1)*(Math.abs(Math.sin(ang))>.4?1:Math.sin(ang)*2.4);
+      const mx=sx+Math.cos(ang)*60, my=sy+Math.sin(ang)*60;
+      const fx=mx+(Math.abs(Math.cos(ang))>Math.abs(Math.sin(ang))?Math.sign(Math.cos(ang))*120:0),
+            fy=my+(Math.abs(Math.sin(ang))>=Math.abs(Math.cos(ang))?Math.sign(Math.sin(ang))*110:0);
+      ctx.strokeStyle='rgba(148,163,184,.25)';
+      ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(mx,my);ctx.lineTo(fx,fy);ctx.stroke();
+      // pulse traveling outward
+      const ph=(t*1.6+i*0.11)%1;
+      const px=ph<.5?sx+(mx-sx)*ph*2:mx+(fx-mx)*(ph-.5)*2,
+            py=ph<.5?sy+(my-sy)*ph*2:my+(fy-my)*(ph-.5)*2;
+      ctx.fillStyle=i%3?GREEN:COPPER;ctx.globalAlpha=a*(1-ph*.7);
+      ctx.beginPath();ctx.arc(px,py,2.5,0,7);ctx.fill();ctx.globalAlpha=a;
+      ctx.fillStyle=FAINT;ctx.fillRect(fx-2,fy-2,4,4);
+    }
+    // die glow
+    const glow=0.5+0.5*Math.sin(t*Math.PI*4);
+    ctx.shadowColor='rgba(91,169,130,'+(0.5*glow*a)+')';ctx.shadowBlur=34;
+    ctx.fillStyle='#0d1722';ctx.strokeStyle=GREEN;ctx.lineWidth=2;
+    ctx.beginPath();ctx.roundRect(cx-sz/2,cy-sz/2,sz,sz,8);ctx.fill();ctx.stroke();
+    ctx.shadowBlur=0;
+    // inner cores
+    ctx.strokeStyle='rgba(91,169,130,.5)';ctx.lineWidth=1;
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++){
+      const lit=(Math.floor(t*9)+i*3+j)%9===0;
+      ctx.fillStyle=lit?GREEN_D:'#0a0b0f';
+      ctx.fillRect(cx-sz/2+14+i*44,cy-sz/2+14+j*44,36,36);
+      ctx.strokeRect(cx-sz/2+14+i*44,cy-sz/2+14+j*44,36,36);
+    }
+    mono('TENSOR CORES',cx,cy+sz/2+28,10,MUTED,'center');
+    mono('PERF / WATT ++',70,220,12,MUTED);
+    const tops=(2.2+1.4*t).toFixed(1);
+    mono(tops+' EXAFLOPS · FP8',70,244,11,COPPER);
+    mono('AI-OPTIMIZED SEMICONDUCTORS — THE COMPUTE SUBSTRATE',70,268,11,FAINT);
+    ctx.globalAlpha=1;
+  }
+
+  /* ---- Scene 4: Inference — electrons → engine → tokens ---- */
+  function drawInference(t,a){
+    ctx.globalAlpha=a; grid(a);
+    sceneTitle(t,a,'Inference at Scale','05 · INFERENCE — ELECTRONS BECOME TOKENS');
+    const ey=320, bx=560, bw=240, bh=130;
+    // electrons in (left wave)
+    ctx.strokeStyle=COPPER;ctx.lineWidth=2;
+    ctx.beginPath();
+    for(let x=70;x<bx-10;x+=4){const y=ey+Math.sin((x/26)-t*14)*16;x===70?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+    ctx.stroke();
+    mono('ELECTRONS →',70,ey-44,11,COPPER);
+    // engine box
+    ctx.fillStyle='#0d1722';ctx.strokeStyle=GREEN;ctx.lineWidth=2;
+    ctx.beginPath();ctx.roundRect(bx,ey-bh/2,bw,bh,10);ctx.fill();ctx.stroke();
+    ctx.font='500 17px "Source Serif 4", serif';ctx.fillStyle=PAPER;ctx.textAlign='center';
+    ctx.fillText('INFERENCE ENGINE',bx+bw/2,ey-6);
+    mono('TPM ↑ · TTFT ↓',bx+bw/2,ey+20,11,GREEN,'center');
+    // internal activity bars
+    for(let i=0;i<6;i++){const h=8+24*Math.abs(Math.sin(t*Math.PI*6+i*1.1));
+      ctx.fillStyle='rgba(91,169,130,.5)';ctx.fillRect(bx+26+i*32,ey+bh/2-14-h,14,h);}
+    // tokens out (right)
+    for(let i=0;i<14;i++){
+      const ph=((t*2.4)+i/14)%1, x=bx+bw+14+ph*(1180-bx-bw-30), y=ey-26+(i%4)*16;
+      ctx.fillStyle=i%4===0?GREEN:'rgba(91,169,130,.7)';ctx.globalAlpha=a*(1-ph*.55);
+      ctx.fillRect(x,y,9,9);ctx.globalAlpha=a;
+    }
+    mono('→ TOKENS',1180,ey-44,11,GREEN,'right');
+    // throughput counter
+    const tps=(1.2+t*2.7).toFixed(2);
+    ctx.font='500 34px "Source Serif 4", serif';ctx.fillStyle=PAPER;ctx.textAlign='left';
+    ctx.fillText(tps+'M',70,236);
+    mono('TOKENS / SEC · FLEET THROUGHPUT',70,258,11,FAINT);
+    mono('SERVING · QUANTIZATION · KERNELS · MaaS',70,440,11,FAINT);
+    ctx.globalAlpha=1;
+  }
+
+  /* ---- Scene 5: Data Centers — racks, liquid-cooling loop, power bus ---- */
+  function loopPoint(d,lx,ly,rx,ry){
+    const W=rx-lx, Hh=ry-ly, tot=2*(W+Hh), dd=(((d%1)+1)%1)*tot;
+    if(dd<W) return {x:lx+dd, y:ly};
+    if(dd<W+Hh) return {x:rx, y:ly+(dd-W)};
+    if(dd<2*W+Hh) return {x:rx-(dd-W-Hh), y:ry};
+    return {x:lx, y:ry-(dd-2*W-Hh)};
+  }
+  function drawDatacenter(t,a){
+    ctx.globalAlpha=a; grid(a);
+    sceneTitle(t,a,'AI Data Centers','04 · DATA CENTERS — PURPOSE-BUILT, LIQUID-COOLED');
+    const rows=6, rackW=78, gap=22, pitch=rackW+gap, baseX=636, topY=214, rackH=192, slots=6;
+    const bankR=baseX+(rows-1)*pitch+rackW;
+    const busY=topY+rackH+30;
+
+    // power bus — copper electrons feeding in from the left
+    ctx.strokeStyle=COPPER;ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(70,busY);ctx.lineTo(bankR,busY);ctx.stroke();
+    for(let i=0;i<10;i++){const ph=((t*1.3)+i/10)%1, x=70+ph*(bankR-70);
+      ctx.fillStyle=COPPER;ctx.globalAlpha=a*(0.35+0.65*Math.sin(ph*Math.PI));
+      ctx.beginPath();ctx.arc(x,busY,2.4,0,7);ctx.fill();}
+    ctx.globalAlpha=a;
+    mono('POWER IN →',70,busY-12,11,COPPER);
+
+    // liquid-cooling loop circulating around the rack bank
+    const lx=baseX-18, ly=topY-22, rx=bankR+18, ry=topY+rackH+12;
+    ctx.strokeStyle='rgba(91,169,130,.4)';ctx.lineWidth=3;
+    ctx.beginPath();ctx.roundRect(lx,ly,rx-lx,ry-ly,12);ctx.stroke();
+    for(let i=0;i<16;i++){const p=loopPoint((t*0.16)+i/16,lx,ly,rx,ry);
+      ctx.fillStyle=GREEN;ctx.globalAlpha=a*.9;
+      ctx.beginPath();ctx.arc(p.x,p.y,2.6,0,7);ctx.fill();}
+    ctx.globalAlpha=a;
+    mono('COOLANT LOOP',rx-2,ly-8,9,GREEN,'right');
+
+    // racks
+    for(let r=0;r<rows;r++){
+      const x=baseX+r*pitch;
+      // power riser from bus into rack
+      ctx.strokeStyle='rgba(200,133,74,.3)';ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(x+rackW/2,busY);ctx.lineTo(x+rackW/2,topY+rackH);ctx.stroke();
+      // rack shell
+      ctx.fillStyle='#0d1722';ctx.strokeStyle='rgba(140,160,170,.4)';ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.roundRect(x,topY,rackW,rackH,6);ctx.fill();ctx.stroke();
+      // server slots
+      const slotH=(rackH-16)/slots;
+      for(let s=0;s<slots;s++){
+        const sy=topY+8+s*slotH, my=sy+2+(slotH-5)/2;
+        ctx.fillStyle='#0a141d';ctx.fillRect(x+7,sy+2,rackW-14,slotH-5);
+        for(let k=0;k<3;k++){
+          const lit=(Math.floor(t*9)+r*5+s*3+k*7)%4===0;
+          ctx.fillStyle=lit?(k===0?GREEN:(k===1?GREEN_D:COPPER)):'#1c2a36';
+          ctx.beginPath();ctx.arc(x+15+k*7,my,1.7,0,7);ctx.fill();
+        }
+        const w=(rackW-44)*(0.3+0.7*Math.abs(Math.sin(t*3+r*0.7+s)));
+        ctx.fillStyle='rgba(91,169,130,.45)';ctx.fillRect(x+34,my-1,w,2);
+      }
+      // rising heat extraction above each rack
+      for(let h=0;h<3;h++){const hp=((t*0.6)+h/3+r*0.13)%1;
+        ctx.fillStyle=GREEN;ctx.globalAlpha=a*(1-hp)*.45;
+        ctx.beginPath();ctx.arc(x+rackW/2+Math.sin(hp*6+r)*6,topY-24-hp*24,1.8,0,7);ctx.fill();}
+      ctx.globalAlpha=a;
+    }
+
+    // labels & metric
+    mono('LIQUID-COOLED · HIGH-DENSITY RACKS',70,220,12,MUTED);
+    mono('132 kW / RACK · MODULAR DEPLOYMENT',70,244,11,FAINT);
+    const mw=(18+t*46).toFixed(0);
+    ctx.font='500 34px "Source Serif 4", serif';ctx.fillStyle=PAPER;ctx.textAlign='left';
+    ctx.fillText(mw+' MW',70,300);
+    mono('CONTRACTED CAPACITY · MEGAWATTS → COMPUTE',70,322,11,FAINT);
+    ctx.globalAlpha=1;
+  }
+
+  const DRAW=[drawRobotics,drawLLM,drawChips,drawDatacenter,drawInference];
+  const N=DRAW.length;
+
+  /* ---- tabs ---- */
+  const tabsEl=document.getElementById('reelTabs'), coordEl=document.getElementById('reelCoord');
+  SCENES.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.className='rtab'+(i===0?' active':'');
+    b.innerHTML=s.label+'<span class="dot"></span>';
+    b.setAttribute('aria-label','Show '+s.label+' scene');
+    b.addEventListener('click',()=>{sceneIdx=i;sceneStart=performance.now();syncTabs();});
+    tabsEl.appendChild(b);
+  });
+  function syncTabs(){
+    [...tabsEl.children].forEach((b,i)=>{
+      b.classList.toggle('active',i===sceneIdx);
+      if(i===sceneIdx){const d=b.querySelector('.dot');d.style.animation='none';void d.offsetWidth;d.style.animation='';}
+    });
+    coordEl.textContent='SCENE '+String(sceneIdx+1).padStart(2,'0')+' / '+String(N).padStart(2,'0');
+  }
+
+  /* ---- loop ---- */
+  function frame(now){
+    if(!playing)return;
+    let el=now-sceneStart;
+    if(el>=SCENE_DUR){sceneIdx=(sceneIdx+1)%N;sceneStart=now;el=0;syncTabs();}
+    const t=el/SCENE_DUR;
+    ctx.clearRect(0,0,W,H);
+    // crossfade: incoming fades in over FADE
+    const aIn=Math.min(el/FADE,1);
+    if(aIn<1){const prev=(sceneIdx+N-1)%N;DRAW[prev]((1+t),1-aIn);}
+    DRAW[sceneIdx](t,aIn);
+    raf=requestAnimationFrame(frame);
+  }
+  const playBtn=document.getElementById('reelPlay');
+  playBtn.addEventListener('click',()=>{
+    playing=!playing;
+    playBtn.textContent=playing?'PAUSE ⏸':'PLAY ▶';
+    playBtn.setAttribute('aria-label',playing?'Pause animation':'Play animation');
+    if(playing){sceneStart=performance.now();raf=requestAnimationFrame(frame);}
+  });
+  // only animate when visible
+  const vis=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting&&playing){sceneStart=performance.now();raf=requestAnimationFrame(frame);}
+      else cancelAnimationFrame(raf);
+    });
+  },{threshold:.15});
+  vis.observe(cv);
+  if(reduce){playing=false;playBtn.textContent='PLAY ▶';DRAW[0](0.3,1);}
+  else DRAW[0](0,1);
+})();
+</script>
 </body>
 </html>
