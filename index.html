@@ -150,25 +150,6 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,3.4vw,44px);lin
 .stack-detail .d-tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--green-2);text-transform:uppercase}
 .stack-detail h3{font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,32px);margin:10px 0 14px}
 .stack-detail p{color:var(--muted);max-width:60ch}
-.d-cos{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
-.d-cos .d-cos-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--faint);text-transform:uppercase;margin-bottom:12px}
-.chiprow{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--mono);font-size:12px;padding:6px 13px;border:1px solid var(--line-strong);border-radius:99px;color:var(--muted);transition:.2s}
-.chip.lit{border-color:var(--green-2);color:var(--green-2);background:var(--green-glow)}
-
-/* ---------- portfolio ---------- */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 26px}
-.fbtn{font-family:var(--mono);font-size:12px;letter-spacing:.05em;padding:8px 16px;border-radius:99px;border:1px solid var(--line-strong);background:none;color:var(--muted);cursor:pointer;transition:.2s}
-.fbtn:hover{color:var(--paper);border-color:var(--paper)}
-.fbtn.active{background:var(--green-2);border-color:var(--green-2);color:var(--ink);font-weight:500}
-.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
-.pcard{border:1px solid var(--line);border-radius:8px;background:var(--ink-2);padding:18px;transition:border-color .25s,transform .25s,opacity .35s,background .25s}
-.pcard:hover{border-color:var(--green-2);transform:translateY(-3px);background:var(--ink-3)}
-.pcard.dim{opacity:.16;pointer-events:none}
-.pcard .p-name{font-family:var(--serif);font-size:18px;font-weight:600}
-.pcard .p-desc{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45;min-height:36px}
-.pcard .p-meta{display:flex;justify-content:space-between;margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase}
-.pcard .p-meta .layer{color:var(--copper)}
 
 /* ---------- approach ---------- */
 .appr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:44px}
@@ -239,9 +220,8 @@ footer .f-links a:hover{color:var(--paper)}
   <div class="nav-links" id="navLinks">
     <a href="#mission">01 Mission</a>
     <a href="#thesis">02 Thesis</a>
-    <a href="#portfolio">03 Portfolio</a>
-    <a href="#approach">04 Approach</a>
-    <a href="#experience">05 Experience</a>
+    <a href="#approach">03 Approach</a>
+    <a href="#experience">04 Experience</a>
     <a class="cta" href="mailto:info@incrementcap.com">Pitch Us →</a>
   </div>
 </nav>
@@ -334,23 +314,10 @@ footer .f-links a:hover{color:var(--paper)}
 
 <div class="divider"></div>
 
-<!-- ============ PORTFOLIO ============ -->
-<section id="portfolio">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-no">// 03</span><span class="sec-title">Illustrative Portfolio</span></div>
-    <h2 class="reveal">Backing technical pioneers, scaling regional innovations into worldwide industry leaders.</h2>
-    <p class="lede reveal">Together with our capital and ecosystem partners, some of the companies our partners have supported from Seed to IPO include the following.</p>
-    <div class="filters reveal" id="filters" role="group" aria-label="Filter portfolio by layer"></div>
-    <div class="port-grid" id="portGrid"></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- ============ APPROACH ============ -->
 <section id="approach">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-no">// 04</span><span class="sec-title">Investment Approach</span></div>
+    <div class="sec-head reveal"><span class="sec-no">// 03</span><span class="sec-title">Investment Approach</span></div>
     <h2 class="reveal">A sector-driven approach to artificial intelligence and AI infrastructure.</h2>
     <div class="appr-grid">
       <div class="acard reveal"><div class="a-line"></div><div class="a-no">01</div><h3>Enabling Founders</h3><p>We invest at the genesis of innovation, often at pre-seed or seed, across the entire AI value chain.</p></div>
@@ -365,7 +332,7 @@ footer .f-links a:hover{color:var(--paper)}
 <!-- ============ EXPERIENCE ============ -->
 <section id="experience">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="sec-no">// 05</span><span class="sec-title">Why Increment</span></div>
+    <div class="sec-head reveal"><span class="sec-no">// 04</span><span class="sec-title">Why Increment</span></div>
     <h2 class="reveal">World-class investment experience.</h2>
     <p class="lede reveal">Our approach to early-to-growth stage companies is informed by collective experience across early-stage venture, growth equity, buyouts, PIPEs, special situations credit, operational turnarounds, spin-offs and restructurings.</p>
     <div class="exp-grid">
@@ -375,7 +342,7 @@ footer .f-links a:hover{color:var(--paper)}
       <div class="ecard reveal"><h4>Deep Technical Expertise</h4><p>Engineering and product leadership from global technology leaders — enabling diligence and value creation at every stage.</p></div>
     </div>
     <div class="badges reveal">
-      <span class="badge">Google</span><span class="badge">Microsoft</span><span class="badge">Amazon</span><span class="badge">AMD</span><span class="badge">Warburg Pincus</span><span class="badge">Clearlake Capital</span><span class="badge">Apax Partners</span><span class="badge">Capital Group</span><span class="badge">Goldman Sachs</span><span class="badge">Credit Suisse</span><span class="badge">UBS</span><span class="badge">JPMorgan</span>
+      <span class="badge">Google</span><span class="badge">Microsoft</span><span class="badge">Amazon</span><span class="badge">AMD</span><span class="badge">Warburg Pincus</span><span class="badge">Clearlake Capital</span><span class="badge">Goldman Sachs</span><span class="badge">UBS</span><span class="badge">JPMorgan</span>
     </div>
   </div>
 </section>
@@ -385,7 +352,7 @@ footer .f-links a:hover{color:var(--paper)}
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="contact">
   <div class="wrap">
-    <div class="sec-head reveal" style="justify-content:center"><span class="sec-no">// 06</span><span class="sec-title">Get In Touch</span></div>
+    <div class="sec-head reveal" style="justify-content:center"><span class="sec-no">// 05</span><span class="sec-title">Get In Touch</span></div>
     <h2 class="reveal">Have a compelling AI company? We'd love to hear from you.</h2>
     <p class="lede reveal">Tell us what you're building, the layer of the stack you sit in, and where you are in your journey — pre-seed to pre-IPO.</p>
     <a class="btn primary reveal" href="mailto:info@incrementcap.com">Pitch Us → info@incrementcap.com</a>
@@ -399,9 +366,9 @@ footer .f-links a:hover{color:var(--paper)}
 
 <footer>
   <a class="brand" href="#top" aria-label="Increment Capital home"><svg class="logo-svg logo-svg--sm"><use href="#ic-logo"/></svg></a>
-  <div class="f-l">© 2026 Increment Capital. All rights reserved. · Licensed by the SFC (Hong Kong); affiliates licensed by AMAC (Shanghai).</div>
+  <div class="f-l">© 2026 Increment Capital. All rights reserved.</div>
   <div class="f-links">
-    <a href="#mission">Mission</a><a href="#thesis">Thesis</a><a href="#portfolio">Portfolio</a><a href="#approach">Approach</a><a href="#contact">Contact</a>
+    <a href="#mission">Mission</a><a href="#thesis">Thesis</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
   </div>
 </footer>
 
@@ -428,26 +395,6 @@ const LAYERS = [
    detail:"Machining, manufacturing, mobility and operations: vertical AI businesses where proprietary data loops create durable moats."}
 ];
 
-const PORTFOLIO = [
-  {name:"Anthropic",      layer:"models",        stage:"Growth"},
-  {name:"Infinigence",    layer:"inference",     stage:"Growth"},
-  {name:"Innomatrix",     layer:["power","dc"],  stage:"Seed"},
-  {name:"Polar Bear Tech",layer:"silicon",       stage:"Growth"},
-  {name:"SGLang",         layer:"inference",     stage:"Seed"},
-  {name:"EigenAI",        layer:"inference",     stage:"Acquired"},
-  {name:"Nunchaku AI",    layer:"inference",     stage:"Seed"},
-  {name:"TensorMill",     layer:"agents",        stage:"Seed"},
-  {name:"Atto Research",  layer:"dc",            stage:"Growth"},
-  {name:"XtalPi",         layer:"agents",        stage:"IPO"},
-  {name:"OmniML",         layer:"inference",     stage:"Acquired"},
-  {name:"Tornado AI",     layer:"agents",        stage:"Seed"},
-  {name:"Zetta",          layer:"dc",            stage:"Seed"},
-  {name:"Falcon Alpha",   layer:"agents",        stage:"Seed"},
-  {name:"Klook",          layer:"agents",        stage:"Growth"},
-  {name:"GBike",          layer:"agents",        stage:"Growth"}
-];
-const LAYER_NAMES = Object.fromEntries(LAYERS.map(l=>[l.id,l.name]));
-
 /* ================= STACK ================= */
 const strata = document.getElementById('strata');
 const detail = document.getElementById('stackDetail');
@@ -464,45 +411,14 @@ function selectLayer(id){
     const on=b.id==='tab-'+id;
     b.classList.toggle('active',on); b.setAttribute('aria-selected',on);
   });
-  const cos=PORTFOLIO.filter(p=>(Array.isArray(p.layer)?p.layer:[p.layer]).includes(id));
   detail.innerHTML=`
     <div class="d-tag">${l.tag} · ${l.sub}</div>
     <h3>${l.name}</h3>
     <p>${l.blurb}</p>
-    <p style="margin-top:12px;font-size:14px;color:var(--faint)">${l.detail}</p>
-    <div class="d-cos">
-      <div class="d-cos-lbl">Where We've Invested</div>
-      <div class="chiprow">${cos.length?cos.map(c=>`<span class="chip lit">${c.name}</span>`).join(''):'<span class="chip">Actively sourcing</span>'}</div>
-      <div style="margin-top:18px"><a class="btn" href="#portfolio" style="font-size:12px;padding:9px 18px">View in Portfolio ↓</a></div>
-    </div>`;
+    <p style="margin-top:12px;font-size:14px;color:var(--faint)">${l.detail}</p>`;
   detail.classList.add('visible');
 }
 selectLayer('inference');
-
-/* ================= PORTFOLIO GRID + FILTERS ================= */
-const grid=document.getElementById('portGrid');
-PORTFOLIO.forEach(p=>{
-  const layers=Array.isArray(p.layer)?p.layer:[p.layer];
-  const c=document.createElement('div');
-  c.className='pcard reveal'; c.dataset.layer=layers.join(' ');
-  c.innerHTML=`<div class="p-name">${p.name}</div>
-  <div class="p-meta"><span class="layer">${layers.map(l=>LAYER_NAMES[l]).join(' · ')}</span><span>${p.stage}</span></div>`;
-  grid.appendChild(c);
-});
-const filters=document.getElementById('filters');
-const fAll=[{id:'all',name:'All'},...LAYERS.map(l=>({id:l.id,name:l.name}))];
-fAll.forEach((f,i)=>{
-  const b=document.createElement('button');
-  b.className='fbtn'+(i===0?' active':''); b.textContent=f.name;
-  b.addEventListener('click',()=>{
-    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    document.querySelectorAll('.pcard').forEach(card=>{
-      card.classList.toggle('dim', f.id!=='all' && !card.dataset.layer.split(' ').includes(f.id));
-    });
-  });
-  filters.appendChild(b);
-});
 
 /* ================= NAV / PROGRESS / REVEAL ================= */
 const nav=document.getElementById('nav'), prog=document.getElementById('progress');
